@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import ReportPage from '@/pages/ReportPage';
 import MainPage from "./pages/MainPage";
 import GlobalStyle from "./styles/GlobalStyle";
+import ReservationPage from "./pages/ReservationPage";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Routes>
             <Route path="/" element={<MainPage />}/>
             <Route path="/report" element={<ReportPage />}/>
+            <Route path="/reservation" element={<ReservationPage />}/>
         </Routes>
     </BrowserRouter>
   )
