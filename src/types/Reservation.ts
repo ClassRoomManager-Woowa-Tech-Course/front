@@ -1,7 +1,12 @@
 export interface Reservation {
-    id: number;
+    userRole: 'student' | 'staff' | '';
     userId: string;
-    room: string;
-    date: string;
+    contact: string;
+    roomNumber: string;
     purpose: string;
+    file?: FileList;
+    id: number;
+    date: string;
+    startTime: string;
+    endTime: string;
 }
