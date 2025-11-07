@@ -19,17 +19,17 @@ const ListPageLayout: React.FC<ListPageLayoutProps> = ({ children }) => {
 export default ListPageLayout;
 
 const PageWrapper = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px;          
-  box-sizing: border-box;
+    width: 80%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;          
+    box-sizing: border-box;
 
-  @media (max-width: 768px) {
-    padding: 20px;
-  }
+    @media (max-width: 768px) {
+        padding: 20px;
+    }
 `;
 
 const ContentContainer = styled.div`
@@ -50,9 +50,9 @@ const ContentContainer = styled.div`
 
 const Mascot = styled.img`
   position: fixed;
-  right: 10%;
-  bottom: 10%;
-  width: 250px;
+  left: 70%;
+  bottom: 5%;
+  width: 350px;
   z-index: 5;
 
   @media (max-width: 768px) {
