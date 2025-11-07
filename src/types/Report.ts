@@ -1,4 +1,6 @@
 export interface Report {
+    id: number;
+    date: string;
     item: string;
     roomNumber: string;
     userRole: 'student' | 'staff' | '';
