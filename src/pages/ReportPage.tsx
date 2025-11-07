@@ -60,8 +60,8 @@ const ReportPage = () => {
                 </FormRow>
 
                 <FormGroup>
-                    <FormLabel htmlFor="description">고장 상세 기재</FormLabel>
-                    <StyledTextArea id="description" {...register('description', { required: true })} />
+                    <FormLabel htmlFor="content">고장 상세 기재</FormLabel>
+                    <StyledTextArea id="content" {...register('content', { required: true })} />
                 </FormGroup>
 
                 <FormGroup>
@@ -75,4 +75,5 @@ const ReportPage = () => {
         </PageLayout>
     )
 }
+
 export default ReportPage;
