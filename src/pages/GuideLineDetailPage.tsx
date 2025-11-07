@@ -3,6 +3,7 @@ import ListPageHeader from "@/components/ListPageHeader";
 import {guideMockData} from "@/data/GuideMockData";
 import {useParams} from "react-router-dom";
 import styled from "styled-components";
+import {IoCalendarOutline} from "react-icons/io5";
 
 const GuideLineDetailPage = () => {
     const {id} = useParams<{id: string}>();
@@ -21,7 +22,12 @@ const GuideLineDetailPage = () => {
         <ListPageLayout>
             <ListPageHeader
                 title={item.title}
-                description={`게시일: ${item.date}`}
+                description={
+                    <DescriptionWrapper>
+                        <IoCalendarOutline/>
+                        <span>{`게시일: ${item.date}`}</span>
+                    </DescriptionWrapper>
+                }
             />
             <ContentWrapper>
                 <ContentText>
@@ -41,10 +47,14 @@ const ContentWrapper = styled.div`
   border-radius: 8px;
   min-height: 300px;
 `;
-
+const DescriptionWrapper = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+`;
 const ContentText = styled.p`
   font-size: 16px;
   color: #333;
   line-height: 1.8;
-  white-space: pre-wrap; // 줄바꿈(\n)을 그대로 표시
+  white-space: pre-wrap;
 `;

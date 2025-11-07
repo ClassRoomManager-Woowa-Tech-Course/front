@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 interface ListPageHeaderProps {
     title: string;
-    description: string;
+    description: React.ReactNode;
 }
 
 const ListPageHeader: React.FC<ListPageHeaderProps> = ({ title, description }) => (
