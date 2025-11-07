@@ -82,7 +82,7 @@ const ReservationPage = () => {
                 </FormGroup>
                 <FormGroup>
                     <FormLabel htmlFor="file">첨부 파일</FormLabel>
-                    <StyledInput id="file" type="file" {...register('file')} />
+                    <StyledInput id="file" type="file" multiple {...register('files')} />
                 </FormGroup>
                 <ButtonWrapper>
                     <StyledButton type="submit">예약하기</StyledButton>
