@@ -1,12 +1,11 @@
-import { useForm, type SubmitHandler } from 'react-hook-form';
+import {type SubmitHandler, useForm} from 'react-hook-form';
 import PageLayout from "@/layouts/PageLayout";
 import PageHeader from "@/components/PageHeader";
 import type { Report } from "@/types/Report"
 import {
-    FormGroup, FormLabel, FormRow,
-    StyledInput, StyledSelect, StyledTextArea, StyledButton
+    FormGroup, FormLabel, FormRow, ButtonWrapper,
+    StyledInput, StyledSelect, StyledTextArea, StyledButton, StyledForm
 } from '@/components/FormElements';
-import {ButtonWrapper, StyledForm} from "../components/FormElements";
 
 const ReportPage = () => {
     const { register, handleSubmit } = useForm<Report>();
@@ -67,8 +66,7 @@ const ReportPage = () => {
 
                 <FormGroup>
                     <FormLabel htmlFor="file">첨부 파일</FormLabel>
-                    {/* '첨부 파일' 영역은 StyledInput을 재활용하거나 커스텀 FileDropzone을 만듭니다. */}
-                    <StyledInput id="file" type="file" {...register('file')} />
+                    <StyledInput id="file" type="file" multiple {...register('files')}/>
                 </FormGroup>
                 <ButtonWrapper>
                     <StyledButton type="submit">신고하기</StyledButton>
