@@ -55,7 +55,6 @@ const ReservationPage = () => {
                             {...register('date', { required: true })}
                         />
                     </FormGroup>
-
                     <FormGroup>
                         <FormLabel htmlFor="startTime">시작 시간</FormLabel>
                         <StyledInput
@@ -64,7 +63,6 @@ const ReservationPage = () => {
                             {...register('startTime', { required: true })}
                         />
                     </FormGroup>
-
                     <FormGroup>
                         <FormLabel htmlFor="endTime">종료 시간</FormLabel>
                         <StyledInput
