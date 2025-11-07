@@ -4,7 +4,7 @@ export interface Reservation {
     contact: string;
     roomNumber: string;
     purpose: string;
-    file?: FileList;
+    files?: FileList;
     id: number;
     date: string;
     startTime: string;
