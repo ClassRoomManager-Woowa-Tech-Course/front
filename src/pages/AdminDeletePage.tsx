@@ -8,7 +8,7 @@ import {
     StyledForm,
     StyledInput,
     StyledSelect
-} from "../components/FormElements";
+} from "@/styles/FormElements.styles";
 import {useForm} from "react-hook-form";
 import type {Admin} from "../types/Admin";
 

@@ -5,7 +5,7 @@ import type { Report } from "@/types/Report"
 import {
     FormGroup, FormLabel, FormRow, ButtonWrapper,
     StyledInput, StyledSelect, StyledTextArea, StyledButton, StyledForm
-} from '@/components/FormElements';
+} from '@/styles/FormElements.styles';
 
 const ReportPage = () => {
     const { register, handleSubmit } = useForm<Report>();

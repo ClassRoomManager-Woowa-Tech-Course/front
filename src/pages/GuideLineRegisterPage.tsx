@@ -1,5 +1,5 @@
-import PageLayout from "../layouts/PageLayout";
-import PageHeader from "../components/PageHeader";
+import PageLayout from "@/layouts/PageLayout";
+import PageHeader from "@/components/PageHeader";
 import {
     ButtonWrapper,
     FormGroup,
@@ -8,9 +8,9 @@ import {
     StyledForm,
     StyledInput,
     StyledTextArea
-} from "../components/FormElements";
+} from "@/styles/FormElements.styles";
 import {useForm} from "react-hook-form";
-import type {GuideLine} from "../types/GuideLine";
+import type {GuideLine} from "@/types/GuideLine";
 
 const GuideLineRegisterPage = () => {
     const {register} = useForm<GuideLine>();

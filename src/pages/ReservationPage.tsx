@@ -11,7 +11,7 @@ import {
     StyledInput,
     StyledSelect,
     StyledTextArea
-} from "../components/FormElements";
+} from "@/styles/FormElements.styles";
 
 const ReservationPage = () => {
     const { register, handleSubmit } = useForm<Reservation>();
