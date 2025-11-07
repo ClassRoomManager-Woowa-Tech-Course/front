@@ -9,7 +9,7 @@ export const reportMockData: Report[] = [
         userRole: 'student',
         userId: '20210001',
         contact: '010-1234-5678',
-        description: '빔프로젝터 화면이 계속 깜빡거립니다. 10분 정도 켜두면 아예 꺼집니다.',
+        content: '빔프로젝터 화면이 계속 깜빡거립니다. 10분 정도 켜두면 아예 꺼집니다.',
         files: undefined, // 첨부 파일 없음
         status: 'pending' // 처리 상태: 대기중
     },
@@ -21,7 +21,7 @@ export const reportMockData: Report[] = [
         userRole: 'staff',
         userId: 'S2023005',
         contact: '010-9876-5432',
-        description: '3번째 줄 컴퓨터 본체 전원이 들어오지 않습니다. 파워 케이블을 바꿔 끼워도 동일합니다.',
+        content: '3번째 줄 컴퓨터 본체 전원이 들어오지 않습니다. 파워 케이블을 바꿔 끼워도 동일합니다.',
         files: undefined, // 실제 FileList 객체는 브라우저에서만 생성 가능
         status: 'completed' // 처리 상태: 완료
     },
@@ -33,7 +33,7 @@ export const reportMockData: Report[] = [
         userRole: 'student',
         userId: '20220010',
         contact: '010-1111-2222',
-        description: '강의실 마이크에서 소리가 지지직거리며 나옵니다. 배터리는 충분한 것 같습니다.',
+        content: '강의실 마이크에서 소리가 지지직거리며 나옵니다. 배터리는 충분한 것 같습니다.',
         files: undefined,
         status: 'pending'
     }

@@ -6,7 +6,7 @@ export interface Report {
     userRole: 'student' | 'staff' | '';
     userId: string;
     contact: string;
-    description: string;
+    content: string;
     files?: FileList;
     status: 'pending' | 'completed'
 }
