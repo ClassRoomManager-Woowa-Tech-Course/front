@@ -12,6 +12,7 @@ import AdminLoginPage from "@/pages/AdminLoginPage";
 import AdminRegisterPage from "@/pages/AdminRegisterPage";
 import AdminDeletePage from "./pages/AdminDeletePage";
 import GuideLineRegisterPage from "./pages/GuideLineRegisterPage";
+import ReportDetailPage from "./pages/ReportDetailPage";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/guideline/:id" element={<GuideLineDetailPage />}/>
             <Route path="/guideline/register" element={<GuideLineRegisterPage />}/>
             <Route path="/reports" element={<ReportStatusPage />}/>
+            <Route path="/report/:id" element={<ReportDetailPage />}/>
             <Route path="/admin" element={<AdminLoginPage />}/>
             <Route path="/admin/register" element={<AdminRegisterPage />}/>
             <Route path="/admin/delete" element={<AdminDeletePage />}/>
