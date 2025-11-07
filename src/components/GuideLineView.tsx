@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoCalendarOutline, IoBusinessOutline } from 'react-icons/io5';
 import styled from "styled-components";
 interface ViewProps {
-    item: GuideLine; // GuideLineItem 대신 GuideLine으로 수정
+    item: GuideLine;
 }
 
 const GuideLineView: React.FC<ViewProps> = ({item}) => {
@@ -22,7 +22,7 @@ const GuideLineView: React.FC<ViewProps> = ({item}) => {
                     <IoCalendarOutline/>
                     <span>{item.date}</span>
                     <IoBusinessOutline/>
-                    <span>{item.room}</span>
+                    <span>{item.roomNumber}</span>
                 </MetaInfo>
             </InfoSection>
             <ButtonSection>
@@ -55,20 +55,20 @@ const ViewWrapper = styled.div`
   }
 `;
 
-    const InfoSection = styled.div`
+const InfoSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
 
-    const Title = styled.h3`
+const Title = styled.h3`
   margin: 0;
   font-size: 18px;
   font-weight: 700;
   color: #333;
 `;
 
-    const MetaInfo = styled.div`
+const MetaInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -81,13 +81,13 @@ const ViewWrapper = styled.div`
   }
 `;
 
-    const ButtonSection = styled.div`
+const ButtonSection = styled.div`
   @media (max-width: 768px) {
     width: 100%;
   }
 `;
 
-    const ActionButton = styled.button`
+const ActionButton = styled.button`
   background-color: #007aff;
   color: white;
   border: none;
