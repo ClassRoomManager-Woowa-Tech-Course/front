@@ -6,7 +6,12 @@ import GlobalStyle from "@/styles/GlobalStyle";
 import ReservationPage from "@/pages/ReservationPage";
 import ReservationStatusPage from "@/pages/ReservationStatusPage";
 import GuideLinePage from "@/pages/GuideLinePage";
-import GuideLineDetailPage from "./pages/GuideLineDetailPage";
+import GuideLineDetailPage from "@/pages/GuideLineDetailPage";
+import ReportStatusPage from "@/pages/ReportStatusPage";
+import AdminLoginPage from "@/pages/AdminLoginPage";
+import AdminRegisterPage from "@/pages/AdminRegisterPage";
+import AdminDeletePage from "./pages/AdminDeletePage";
+import GuideLineRegisterPage from "./pages/GuideLineRegisterPage";
 
 
 function App() {
@@ -20,6 +25,11 @@ function App() {
             <Route path="/status" element={<ReservationStatusPage />}/>
             <Route path="/guidelines" element={<GuideLinePage />}/>
             <Route path="/guideline/:id" element={<GuideLineDetailPage />}/>
+            <Route path="/guideline/register" element={<GuideLineRegisterPage />}/>
+            <Route path="/reports" element={<ReportStatusPage />}/>
+            <Route path="/admin" element={<AdminLoginPage />}/>
+            <Route path="/admin/register" element={<AdminRegisterPage />}/>
+            <Route path="/admin/delete" element={<AdminDeletePage />}/>
         </Routes>
     </BrowserRouter>
   )
