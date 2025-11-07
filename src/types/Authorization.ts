@@ -1,0 +1,1 @@
+export type Authorization = 'SUPER_ADMIN' | 'ADMIN' | 'EDITOR' | 'VIEWER';
