@@ -5,6 +5,6 @@ export interface Report {
     userId: string;
     contact: string;
     description: string;
-    file?: FileList;
+    files?: FileList;
     status: 'pending' | 'completed'
 }
