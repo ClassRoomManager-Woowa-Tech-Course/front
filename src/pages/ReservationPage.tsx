@@ -82,7 +82,6 @@ const ReservationPage = () => {
                 </FormGroup>
                 <FormGroup>
                     <FormLabel htmlFor="file">첨부 파일</FormLabel>
-                    {/* '첨부 파일' 영역은 StyledInput을 재활용하거나 커스텀 FileDropzone을 만듭니다. */}
                     <StyledInput id="file" type="file" {...register('file')} />
                 </FormGroup>
                 <ButtonWrapper>

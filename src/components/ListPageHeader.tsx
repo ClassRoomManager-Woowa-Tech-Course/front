@@ -1,6 +1,3 @@
-// src/components/MainHeader.tsx
-// (기존 PageHeader.tsx와는 별개의 새 파일입니다)
-
 import React from 'react';
 import styled from 'styled-components';
 

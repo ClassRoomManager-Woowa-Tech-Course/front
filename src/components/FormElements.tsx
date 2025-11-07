@@ -1,4 +1,3 @@
-// src/components/FormElements.tsx
 import styled from 'styled-components';
 
 export const FormLabel = styled.label`
@@ -17,8 +16,8 @@ export const StyledInput = styled.input`
     padding: 12px 16px;
     font-size: 16px;
     width: 100%;
-    box-sizing: border-box; // 너비 계산을 용이하게
-    color: black; // ✅ 글씨 색상 추가
+    box-sizing: border-box;
+    color: black;
 `;
 
 export const StyledSelect = styled.select`
@@ -29,12 +28,12 @@ export const StyledSelect = styled.select`
     font-size: 16px;
     width: 100%;
     box-sizing: border-box;
-    appearance: none; // 기본 화살표 제거
+    appearance: none;
     color: black;
 
     background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="%23888"><path fill-rule="evenodd" d="M10 13.293l-4.293-4.293a1 1 0 0 1 1.414-1.414L10 10.466l2.879-2.879a1 1 0 1 1 1.414 1.414L10 13.293z" clip-rule="evenodd"/></svg>');
     background-repeat: no-repeat;
-    background-position: right 16px center; /* 화살표 위치 */
+    background-position: right 16px center;
     background-size: 40px 40px;
 `;
 
@@ -81,12 +80,11 @@ export const StyledForm = styled.form`
         margin-bottom: 24px;
     }
 `
-// 폼 그룹핑을 위한 컴포넌트
+
 export const FormGroup = styled.div`
     margin-bottom: 20px;
 `;
 
-// 2개 이상의 항목을 한 줄에 배치하기 위한 Grid
 export const FormRow = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
