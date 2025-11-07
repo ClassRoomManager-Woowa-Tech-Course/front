@@ -18,7 +18,7 @@ function App() {
             <Route path="/report" element={<ReportPage />}/>
             <Route path="/reservation" element={<ReservationPage />}/>
             <Route path="/status" element={<ReservationStatusPage />}/>
-            <Route path="/guideline" element={<GuideLinePage />}/>
+            <Route path="/guidelines" element={<GuideLinePage />}/>
             <Route path="/guideline/:id" element={<GuideLineDetailPage />}/>
         </Routes>
     </BrowserRouter>
