@@ -5,6 +5,8 @@ import MainPage from "@/pages/MainPage";
 import GlobalStyle from "@/styles/GlobalStyle";
 import ReservationPage from "@/pages/ReservationPage";
 import ReservationStatusPage from "@/pages/ReservationStatusPage";
+import GuideLinePage from "@/pages/GuideLinePage";
+import GuideLineDetailPage from "./pages/GuideLineDetailPage";
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
             <Route path="/report" element={<ReportPage />}/>
             <Route path="/reservation" element={<ReservationPage />}/>
             <Route path="/status" element={<ReservationStatusPage />}/>
+            <Route path="/guideline" element={<GuideLinePage />}/>
+            <Route path="/guideline/:id" element={<GuideLineDetailPage />}/>
         </Routes>
     </BrowserRouter>
   )
