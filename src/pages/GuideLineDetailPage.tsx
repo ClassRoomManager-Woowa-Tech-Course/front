@@ -2,8 +2,8 @@ import ListPageLayout from "@/layouts/ListPageLayout";
 import ListPageHeader from "@/components/ListPageHeader";
 import {guideMockData} from "@/data/GuideMockData";
 import {useParams} from "react-router-dom";
-import styled from "styled-components";
 import {IoCalendarOutline} from "react-icons/io5";
+import {ContentText, ContentWrapper, DescriptionWrapper} from "../styles/DetailPage.styles";
 
 const GuideLineDetailPage = () => {
     const {id} = useParams<{id: string}>();
@@ -39,22 +39,3 @@ const GuideLineDetailPage = () => {
 }
 
 export default GuideLineDetailPage;
-
-const ContentWrapper = styled.div`
-  margin-top: 32px;
-  padding: 24px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  min-height: 300px;
-`;
-const DescriptionWrapper = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-`;
-const ContentText = styled.p`
-  font-size: 16px;
-  color: #333;
-  line-height: 1.8;
-  white-space: pre-wrap;
-`;
