@@ -45,8 +45,8 @@ const AdminRegisterPage = () => {
                         <StyledInput id="contact" type="tel" {...register('contact', { required: true })} />
                     </FormGroup>
                     <FormGroup>
-                        <FormLabel htmlFor="status">삭제/휴면</FormLabel>
-                        <StyledSelect id="status" {...register('status', { required: true })}>
+                        <FormLabel htmlFor="active">삭제/휴면</FormLabel>
+                        <StyledSelect id="active" {...register('active', { required: true })}>
                             <option value="">선택하세요</option>
                             <option value="DELETE">삭제</option>
                             <option value="INACTIVE">휴면</option>

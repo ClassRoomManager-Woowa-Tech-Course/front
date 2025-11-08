@@ -19,7 +19,7 @@ const ReportView: React.FC<ViewProps> = ({item, onUpdateStatus}) => {
 
     const handleComplete = () => {
         // 'pending' 상태일 때만 함수를 호출
-        if (item.status === 'pending') {
+        if (item.status === 'PENDING') {
             onUpdateStatus(item.id);
         }
     };
@@ -32,7 +32,7 @@ const ReportView: React.FC<ViewProps> = ({item, onUpdateStatus}) => {
                 <IoCalendarOutline/>
                 <span>{item.date}</span>
                 <IoBusinessOutline/>
-                <span>{item.roomNumber}</span>
+                <span>{item.roomCode}</span>
             </MetaInfo>
             </InfoSection>
             <ButtonSection>
@@ -40,8 +40,8 @@ const ReportView: React.FC<ViewProps> = ({item, onUpdateStatus}) => {
                     내용 확인하기
                 </ActionButton>
                 <ActionButton onClick={handleComplete}
-                              disabled={item.status === 'completed'}>
-                    {item.status === 'completed' ? '처리 완료됨' : '수리 완료 처리'}
+                              disabled={item.status === 'COMPLETED'}>
+                    {item.status === 'COMPLETED' ? '처리 완료됨' : '수리 완료 처리'}
                 </ActionButton>
             </ButtonSection>
         </ViewWrapper>

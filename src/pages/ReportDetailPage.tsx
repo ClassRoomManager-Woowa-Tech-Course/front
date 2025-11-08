@@ -27,7 +27,7 @@ const ReportDetailPage = () => {
                         <IoCalendarOutline/>
                         <span>{`게시일: ${item.date}`}</span>
                         <IoBusinessOutline/>
-                        <span>{item.roomNumber}</span>
+                        <span>{item.roomCode}</span>
                         <span>{`학번/교직원번호: ${item.userId}`}</span>
                         <span>{`연락처: ${item.contact}`}</span>
                     </DescriptionWrapper>

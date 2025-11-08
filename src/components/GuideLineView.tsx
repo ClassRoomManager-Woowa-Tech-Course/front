@@ -22,7 +22,7 @@ const GuideLineView: React.FC<ViewProps> = ({item}) => {
                     <IoCalendarOutline/>
                     <span>{item.date}</span>
                     <IoBusinessOutline/>
-                    <span>{item.roomNumber}</span>
+                    <span>{item.roomCode}</span>
                 </MetaInfo>
             </InfoSection>
             <ButtonSection>

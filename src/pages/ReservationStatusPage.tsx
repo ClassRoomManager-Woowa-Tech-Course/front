@@ -3,17 +3,8 @@ import ListPageHeader from "@/components/ListPageHeader";
 import {useMemo, useState} from "react";
 import CalendarControls from "@/components/CalendarControls";
 import CalendarView from "@/components/CalendarView";
-import type {Reservation} from "@/types/Reservation";
 import ReservationListModal from "../components/ReservationListModal";
-
-const mockData: Reservation[] = [
-    { id: 1, date: '2025-11-04', startTime: '09:00', endTime: '10:00', roomNumber: '5413호', userRole: 'student', userId: 'user1', contact: '010-1234-5678', purpose: '팀 프로젝트' },
-    { id: 2, date: '2025-11-04', startTime: '10:00', endTime: '11:00', roomNumber: '5413호', userRole: 'student', userId: 'user2', contact: '010-1234-5678', purpose: '팀 프로젝트' },
-    { id: 3, date: '2025-11-04', startTime: '11:00', endTime: '12:00', roomNumber: '5413호', userRole: 'student', userId: 'user3', contact: '010-1234-5678', purpose: '스터디' },
-    { id: 11, date: '2025-11-10', startTime: '09:00', endTime: '11:00', roomNumber: '5413호', userRole: 'student', userId: 'user11', contact: '010-1234-5678', purpose: '스터디' },
-    { id: 12, date: '2025-11-11', startTime: '13:00', endTime: '15:00', roomNumber: '5413호', userRole: 'staff', userId: 'staff1', contact: '010-1234-5678', purpose: '회의' },
-    { id: 13, date: '2025-11-04', startTime: '14:00', endTime: '15:00', roomNumber: '5414호', userRole: 'student', userId: 'user13', contact: '010-1234-5678', purpose: '상담' },
-];
+import {mockData} from "../data/ReservationMockData";
 
 const ReservationStatusPage = () => {
     const [currentDate, setCurrentDate] = useState(new Date('2025-11-01'));
@@ -42,7 +33,7 @@ const ReservationStatusPage = () => {
         const dateString = `${year}-${month}`;
 
         return mockData.filter(reservation =>
-            reservation.roomNumber === selectedRoom &&
+            reservation.roomCode === selectedRoom &&
             reservation.date.startsWith(dateString)
         )
     }, [mockData, selectedRoom, currentDate]);
@@ -56,7 +47,7 @@ const ReservationStatusPage = () => {
         const dateString = `${year}-${month}-${day}`;
 
         return mockData
-            .filter(reservation => reservation.roomNumber === selectedRoom &&
+            .filter(reservation => reservation.roomCode === selectedRoom &&
                 reservation.date == dateString)
             .sort((reservationA, reservationB) =>
                 reservationA.startTime.localeCompare(reservationB.startTime));

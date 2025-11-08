@@ -73,8 +73,8 @@ const ReservationPage = () => {
                     </FormGroup>
                 </FormRow>
                 <FormGroup>
-                    <FormLabel htmlFor="roomNumber">강의실 호수</FormLabel>
-                    <StyledInput id="roomNumber" type="text" {...register('roomNumber', { required: true })}/>
+                    <FormLabel htmlFor="roomCode">강의실 호수</FormLabel>
+                    <StyledInput id="roomCode" type="text" {...register('roomCode', { required: true })}/>
                 </FormGroup>
                 <FormGroup>
                     <FormLabel htmlFor="purpose">고장 상세 기재</FormLabel>

@@ -52,7 +52,7 @@ const AdminRegisterPage = () => {
                     </FormGroup>
                     <FormGroup>
                         <FormLabel htmlFor="Authorization">접근 권한 설정</FormLabel>
-                        <StyledSelect id="Authorization" {...register('Authorization', { required: true })}>
+                        <StyledSelect id="Authorization" {...register('authorization', { required: true })}>
                             <option value="">선택하세요</option>
                             <option value="SUPER_ADMIN">전체 관리자</option>
                             <option value="ADMIN">관리자</option>

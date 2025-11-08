@@ -7,6 +7,6 @@ export interface Admin {
     contact: string;
     password: string;
     userRole:string;
-    Authorization: Authorization;
-    status:'ACTIVE'|'INACTIVE';
+    authorization: Authorization;
+    active: 'ACTIVE'|'INACTIVE';
 }

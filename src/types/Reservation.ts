@@ -1,8 +1,8 @@
 export interface Reservation {
-    userRole: 'student' | 'staff' | '';
+    userRole: 'STUDENT' | 'STAFF' | '';
     userId: string;
     contact: string;
-    roomNumber: string;
+    roomCode: string;
     purpose: string;
     files?: FileList;
     id: number;

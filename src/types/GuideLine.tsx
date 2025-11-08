@@ -2,7 +2,7 @@ export interface GuideLine {
     id: number;
     title: string;
     date: string;
-    roomNumber: string;
+    roomCode: string;
     content: string;
     files?: FileList;
 }

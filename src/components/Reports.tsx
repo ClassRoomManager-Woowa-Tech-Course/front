@@ -1,7 +1,7 @@
-import type {Report} from "../types/Report";
+import type {Report} from "@/types/Report";
 import React from "react";
 import styled from "styled-components";
-import ReportView from "./ReportView";
+import ReportView from "@/components/ReportView";
 
 interface ListProps {
     items: Report[];

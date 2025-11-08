@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import type {Report} from "../types/Report";
+import type {Report} from "@/types/Report";
 
 export const ViewWrapper = styled.div<{ item: Report }>`
   display: flex;
@@ -7,7 +7,7 @@ export const ViewWrapper = styled.div<{ item: Report }>`
   align-items: center;
   padding: 24px 32px;
   background-color: white;
-  border: 1px solid ${props => (props.item?.status === 'completed' ? '#888' : '#e63737')}; 
+  border: 1px solid ${props => (props.item?.status === 'COMPLETED' ? '#888' : '#e63737')}; 
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 122, 255, 0.1); 
   

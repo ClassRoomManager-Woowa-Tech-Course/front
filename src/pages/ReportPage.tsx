@@ -27,15 +27,15 @@ const ReportPage = () => {
                     <FormLabel htmlFor="item">고장 물품</FormLabel>
                     <StyledSelect id="item" {...register('item', { required: true })}>
                         <option value="">선택하세요</option>
-                        <option value="projector">빔프로젝터</option>
-                        <option value="pc">컴퓨터</option>
-                        <option value="speaker">스피커</option>
-                        <option value="microphone">마이크</option>
+                        <option value="PROJECTOR">빔프로젝터</option>
+                        <option value="PC">컴퓨터</option>
+                        <option value="SPEAKER">스피커</option>
+                        <option value="MICROPHONE">마이크</option>
                     </StyledSelect>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel htmlFor="roomNumber">강의실 호수</FormLabel>
-                    <StyledInput id="roomNumber" type="text" {...register('roomNumber', { required: true })}/>
+                    <FormLabel htmlFor="roomCode">강의실 호수</FormLabel>
+                    <StyledInput id="roomCode" type="text" {...register('roomCode', { required: true })}/>
                 </FormGroup>
 
                 <FormRow style={{ gridTemplateColumns: '1fr 2fr 2fr' }}>

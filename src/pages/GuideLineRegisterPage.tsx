@@ -23,8 +23,8 @@ const GuideLineRegisterPage = () => {
             <StyledForm>
                 <h3>가이드 라인 작성</h3>
                 <FormGroup>
-                    <FormLabel htmlFor="roomNumber">강의실 호수</FormLabel>
-                    <StyledInput id="roomNumber" type="text" {...register('roomNumber', { required: true })}/>
+                    <FormLabel htmlFor="roomCode">강의실 호수</FormLabel>
+                    <StyledInput id="roomCode" type="text" {...register('roomCode', { required: true })}/>
                 </FormGroup>
                 <FormGroup>
                     <FormLabel htmlFor="content">가이드라인</FormLabel>
