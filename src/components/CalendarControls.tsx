@@ -27,7 +27,9 @@ const CalendarControls: React.FC<CalendarControlsProps> = ({
                 value={selectedRoom}
                 onChange={(e) => onRoomChange(e.target.value)}
             >
-                <option value="5627호">5627호</option>
+                <option value="5413호">5413호</option>
+                <option value="5414호">5414호</option>
+                <option value="5527호">5527호</option>
                 <option value="5507호">5507호</option>
                 <option value="5508호">5508호</option>
             </RoomSelector>

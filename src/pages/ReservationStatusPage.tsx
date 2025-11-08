@@ -12,6 +12,7 @@ const mockData: Reservation[] = [
     { id: 3, date: '2025-11-04', startTime: '11:00', endTime: '12:00', roomNumber: '5413호', userRole: 'student', userId: 'user3', contact: '010-1234-5678', purpose: '스터디' },
     { id: 11, date: '2025-11-10', startTime: '09:00', endTime: '11:00', roomNumber: '5413호', userRole: 'student', userId: 'user11', contact: '010-1234-5678', purpose: '스터디' },
     { id: 12, date: '2025-11-11', startTime: '13:00', endTime: '15:00', roomNumber: '5413호', userRole: 'staff', userId: 'staff1', contact: '010-1234-5678', purpose: '회의' },
+    { id: 13, date: '2025-11-04', startTime: '14:00', endTime: '15:00', roomNumber: '5414호', userRole: 'student', userId: 'user13', contact: '010-1234-5678', purpose: '상담' },
 ];
 
 const ReservationStatusPage = () => {
@@ -35,6 +36,17 @@ const ReservationStatusPage = () => {
         setSelectedDate(null);
     }
 
+    const monthlyReservations = useMemo(() => {
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const dateString = `${year}-${month}`;
+
+        return mockData.filter(reservation =>
+            reservation.roomNumber === selectedRoom &&
+            reservation.date.startsWith(dateString)
+        )
+    }, [mockData, selectedRoom, currentDate]);
+
     const selectedDayReservations = useMemo(() => {
         if (!selectedDate) return [];
 
@@ -44,7 +56,8 @@ const ReservationStatusPage = () => {
         const dateString = `${year}-${month}-${day}`;
 
         return mockData
-            .filter(reservation => reservation.date == dateString)
+            .filter(reservation => reservation.roomNumber === selectedRoom &&
+                reservation.date == dateString)
             .sort((reservationA, reservationB) =>
                 reservationA.startTime.localeCompare(reservationB.startTime));
     }, [selectedDate, mockData, selectedRoom]);
@@ -63,7 +76,7 @@ const ReservationStatusPage = () => {
             />
             <CalendarView
                 currentDate={currentDate}
-                reservations={mockData}
+                reservations={monthlyReservations}
                 onDateSelect={handleDateSelect}
             />
             {selectedDate && (
