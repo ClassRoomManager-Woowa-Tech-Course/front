@@ -88,7 +88,7 @@ export const Time = styled.span`
   justify-content: center;
 `;
 
-export const Purpose = styled.span`
+export const Title = styled.span`
   font-size: 16px;
   font-weight: 500;
   color: #333;

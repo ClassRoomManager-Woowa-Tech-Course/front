@@ -77,12 +77,12 @@ const ReservationPage = () => {
                     <StyledInput id="roomCode" type="text" {...register('roomCode', { required: true })}/>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel htmlFor="purpose">고장 상세 기재</FormLabel>
-                    <StyledTextArea id="purpose" {...register('purpose', { required: true })} />
+                    <FormLabel htmlFor="title">제목</FormLabel>
+                    <StyledInput id="title" type="text" {...register('title', { required: true })}/>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel htmlFor="file">첨부 파일</FormLabel>
-                    <StyledInput id="file" type="file" multiple {...register('files')} />
+                    <FormLabel htmlFor="purpose">사용 목적</FormLabel>
+                    <StyledTextArea id="purpose" {...register('purpose', { required: true })} />
                 </FormGroup>
                 <ButtonWrapper>
                     <StyledButton type="submit">예약하기</StyledButton>

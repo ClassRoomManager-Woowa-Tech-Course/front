@@ -3,6 +3,7 @@ export interface Reservation {
     userId: string;
     contact: string;
     roomCode: string;
+    title: string;
     purpose: string;
     files?: FileList;
     id: number;

@@ -6,7 +6,7 @@ import {
     ModalContainer,
     ModalHeader,
     ModalTitle, NoReservation,
-    Overlay, Purpose, Time, User
+    Overlay, Time, Title, User
 } from "../styles/ReservationListModal.styles";
 
 interface ModalProps {
@@ -36,7 +36,7 @@ const ReservationListModal: React.FC<ModalProps> = ({ reservations, selectedDate
                             {reservations.map(res => (
                                 <ListItem key={res.id}>
                                     <Time>{res.startTime} ~ {res.endTime}</Time>
-                                    <Purpose>{res.purpose}</Purpose>
+                                    <Title>{res.title}</Title>
                                     <User>(예약자: {res.userId})</User>
                                 </ListItem>
                             ))}

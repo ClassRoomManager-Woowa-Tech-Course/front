@@ -8,7 +8,7 @@ import {mockData} from "../data/ReservationMockData";
 
 const ReservationStatusPage = () => {
     const [currentDate, setCurrentDate] = useState(new Date('2025-11-01'));
-    const [selectedRoom, setSelectedRoom] = useState("5413호");
+    const [selectedRoom, setSelectedRoom] = useState("5413");
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
     const handleMonthChange = (direction: 'prev' | 'next') => {
