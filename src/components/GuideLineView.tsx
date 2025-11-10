@@ -1,23 +1,23 @@
-import type {GuideLine} from "../types/GuideLine";
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { IoCalendarOutline, IoBusinessOutline } from 'react-icons/io5';
 import {ActionButton, ButtonSection, InfoSection, MetaInfo, Title, ViewWrapper} from "../styles/GuideLineView.styles";
+import {GuideLineResponse} from "../types/GuideLineResponse";
 interface ViewProps {
-    item: GuideLine;
+    item: GuideLineResponse;
 }
 
 const GuideLineView: React.FC<ViewProps> = ({item}) => {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        navigate(`/guideline/${item.id}`);
+        navigate(`/guidelines/${item.guideLineId}`);
     };
 
     return (
         <ViewWrapper>
             <InfoSection>
-                <Title>{item.title}</Title>
+                <Title>{item.roomCode}호 기자재 사용 가이드라인</Title>
                 <MetaInfo>
                     <IoCalendarOutline/>
                     <span>{item.date}</span>

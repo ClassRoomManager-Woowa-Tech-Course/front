@@ -1,17 +1,17 @@
-import type {GuideLine} from "@/types/GuideLine";
 import React from "react";
 import styled from "styled-components";
 import GuideLineView from "@/components/GuideLineView";
+import {GuideLineResponse} from "../types/GuideLineResponse";
 
 interface ListProps {
-    items: GuideLine[];
+    items: GuideLineResponse[];
 }
 
 const GuideLines: React.FC<ListProps> = ({ items }) => {
     return (
         <ListWrapper>
             {items.map(item => (
-                <GuideLineView key={item.id} item={item} />
+                <GuideLineView key={item.guideLineId} item={item} />
             ))}
         </ListWrapper>
     )
