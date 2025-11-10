@@ -1,13 +1,5 @@
 import {api} from "./Client";
-
-interface AdminLoginRequest {
-    adminId: string;
-    password: string;
-}
-
-interface LoginResponse {
-    token: string;
-}
+import type {AdminLoginRequest} from "@/types/AdminLoginRequest";
 
 export const loginAdmin = async (loginData: AdminLoginRequest): Promise<LoginResponse> => {
     const res = await api.post('/admins/login', loginData);
@@ -24,16 +16,9 @@ export interface AdminRegisterData {
 }
 
 export const registerAdmin = async (registerData: AdminRegisterData): Promise<void> => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        throw new Error("인증 토큰이 없습니다. 먼저 로그인하세요.");
-    }
-
     try {
         await api.post('/admins', registerData, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
+            headers: getAuthHeaders()
         });
     } catch (error: any) {
         console.error("관리자 등록 실패:", error.response?.data);
@@ -41,19 +26,12 @@ export const registerAdmin = async (registerData: AdminRegisterData): Promise<vo
     }
 };
 
-const getAuthHeaders = () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        throw new Error("인증 토큰이 없습니다. 먼저 로그인하세요.");
-    }
-    return { 'Authorization': `Bearer ${token}` };
-};
+
 
 export const deleteAdmin = async (registerData: AdminRegisterData): Promise<void> => {
     try {
         await api.delete(`/admins`, {
             data: registerData,
-            headers: getAuthHeaders()
         });
     } catch (error: any) {
         console.error("관리자 삭제 실패:", error.response?.data);
@@ -63,7 +41,7 @@ export const deleteAdmin = async (registerData: AdminRegisterData): Promise<void
 
 export const suspendAdmin = async (registerData: AdminRegisterData): Promise<void> => {
     try {
-        await api.patch(`/admins`, registerData, { headers: getAuthHeaders() });
+        await api.patch(`/admins`, registerData);
     } catch (error: any) {
         console.error("관리자 휴면 처리 실패:", error.response?.data);
         throw new Error(error.response?.data?.message || "관리자 휴면 처리에 실패했습니다.");
