@@ -9,26 +9,59 @@ import {
     StyledInput,
     StyledSelect
 } from "@/styles/FormElements.styles";
-import {useForm} from "react-hook-form";
-import type {Admin} from "../types/Admin";
+import {SubmitHandler, useForm} from "react-hook-form";
+import type {Admin} from "@/types/Admin";
+import {AdminManageData, deleteAdmin, suspendAdmin} from "@/api/AdminApi";
 
 const AdminRegisterPage = () => {
-    const {register} = useForm<Admin>();
+    const {register, handleSubmit, reset} = useForm<AdminManageData>();
+
+    const onDeleteSubmit: SubmitHandler<Admin> = async (data) => {
+        const confirmMessage = data.active === "DELETE"
+            ? `정말로 '${data.adminId}' 관리자를 삭제하시겠습니까?`
+            : `정말로 '${data.adminId}' 관리자를 휴면 처리하시겠습니까?`;
+        if (!window.confirm(confirmMessage)) {
+            return;
+        }
+        try {
+            if (data.active === "DELETE") {
+                await deleteAdmin({
+                    adminId: data.adminId,
+                    name: data.name,
+                    role: data.role,
+                    contact: data.contact,
+                });
+                alert("관리자 삭제가 완료되었습니다.");
+            } else if (data.active === "INACTIVE") {
+                await suspendAdmin({
+                    adminId: data.adminId,
+                    name: data.name,
+                    role: data.role,
+                    contact: data.contact,
+                });
+                alert("관리자 휴면 처리가 완료되었습니다.");
+            }
+            reset();
+        } catch (error: any) {
+            console.error("작업 실패:", error);
+            alert(error.message || "작업에 실패했습니다.");
+        }
+    }
     return (
         <PageLayout>
             <PageHeader
                 title="관리자 삭제/휴면"
                 description="강의실 시스템 관리자 삭제 및 휴면 계정 관리 페이지입니다."
             />
-            <StyledForm>
+            <StyledForm onSubmit={handleSubmit(onDeleteSubmit)}>
                 <h3>신규 관리자 삭제/휴면 사유 작성</h3>
 
                 <FormGroup>
-                    <FormLabel htmlFor="userRole">학생/교직원</FormLabel>
-                    <StyledSelect id="userRole" {...register('userRole', { required: true })}>
+                    <FormLabel htmlFor="role">학생/교직원</FormLabel>
+                    <StyledSelect id="role" {...register('role', { required: true })}>
                         <option value="">선택하세요</option>
-                        <option value="student">학생</option>
-                        <option value="staff">교직원</option>
+                        <option value="STUDENT">학생</option>
+                        <option value="STAFF">교직원</option>
                     </StyledSelect>
                 </FormGroup>
                 <FormGroup>
@@ -37,8 +70,8 @@ const AdminRegisterPage = () => {
                 </FormGroup>
                 <FormRow>
                     <FormGroup>
-                        <FormLabel htmlFor="userId">학번/교직원번호</FormLabel>
-                        <StyledInput id="userId" type="text" {...register('userId', { required: true })} />
+                        <FormLabel htmlFor="adminId">학번/교직원번호</FormLabel>
+                        <StyledInput id="adminId" type="text" {...register('adminId', { required: true })} />
                     </FormGroup>
                     <FormGroup>
                         <FormLabel htmlFor="contact">연락처</FormLabel>
