@@ -25,8 +25,8 @@ function App() {
             <Route path="/reservation" element={<ReservationPage />}/>
             <Route path="/status" element={<ReservationStatusPage />}/>
             <Route path="/guidelines" element={<GuideLinePage />}/>
-            <Route path="/guideline/:id" element={<GuideLineDetailPage />}/>
-            <Route path="/guideline/register" element={<GuideLineRegisterPage />}/>
+            <Route path="/guidelines/:id" element={<GuideLineDetailPage />}/>
+            <Route path="/guidelines/register" element={<GuideLineRegisterPage />}/>
             <Route path="/reports" element={<ReportStatusPage />}/>
             <Route path="/report/:id" element={<ReportDetailPage />}/>
             <Route path="/admin" element={<AdminLoginPage />}/>
