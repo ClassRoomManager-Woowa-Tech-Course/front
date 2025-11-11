@@ -32,7 +32,7 @@ const GuideLineDetailPage = () => {
                 const data = await getGuideLineById(id);
                 const formattedData = {
                     ...data,
-                    date: data.date.replace('T', ' ').substring(0, 16)
+                    date: data.date ? data.date.replace('T', ' ').substring(0, 16) : '날짜 없음'
                 };
                 setItem(formattedData);
             } catch (err) {
