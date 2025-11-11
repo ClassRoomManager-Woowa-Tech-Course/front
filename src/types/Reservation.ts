@@ -1,6 +1,6 @@
 export interface Reservation {
     userRole: 'STUDENT' | 'STAFF' | '';
-    userId: string;
+    memberId: string;
     contact: string;
     roomCode: string;
     title: string;

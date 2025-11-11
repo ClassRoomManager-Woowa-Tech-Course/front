@@ -1,15 +1,41 @@
 import ListPageLayout from "@/layouts/ListPageLayout";
 import ListPageHeader from "@/components/ListPageHeader";
-import {useMemo, useState} from "react";
+import {useMemo, useState, useEffect} from "react";
 import CalendarControls from "@/components/CalendarControls";
 import CalendarView from "@/components/CalendarView";
 import ReservationListModal from "../components/ReservationListModal";
-import {mockData} from "../data/ReservationMockData";
+import {ReservationResponse} from "../types/ReservationResponse";
+import {getReservations} from "../api/ReservationApi";
 
 const ReservationStatusPage = () => {
-    const [currentDate, setCurrentDate] = useState(new Date('2025-11-01'));
-    const [selectedRoom, setSelectedRoom] = useState("5413");
+    const [currentDate, setCurrentDate] = useState(new Date());
+    const [selectedRoom, setSelectedRoom] = useState<string>("5413");
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+    const [monthlyReservations, setMonthlyReservations] = useState<ReservationResponse[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchReservations = async () => {
+            const year = currentDate.getFullYear();
+            const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+            const yearMonth = `${year}-${month}`;
+
+            try {
+                setIsLoading(true);
+                setError(null);
+                const data = await getReservations(selectedRoom, yearMonth);
+                setMonthlyReservations(data);
+            } catch (err: any) {
+                console.error("Failed to fetch reservations:", err);
+                setError(err.message || "데이터를 불러오는 데 실패했습니다.");
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchReservations();
+    }, [currentDate, selectedRoom]);
 
     const handleMonthChange = (direction: 'prev' | 'next') => {
         setCurrentDate(prevDate => {
@@ -27,17 +53,6 @@ const ReservationStatusPage = () => {
         setSelectedDate(null);
     }
 
-    const monthlyReservations = useMemo(() => {
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-        const dateString = `${year}-${month}`;
-
-        return mockData.filter(reservation =>
-            reservation.roomCode === selectedRoom &&
-            reservation.date.startsWith(dateString)
-        )
-    }, [mockData, selectedRoom, currentDate]);
-
     const selectedDayReservations = useMemo(() => {
         if (!selectedDate) return [];
 
@@ -46,12 +61,14 @@ const ReservationStatusPage = () => {
         const day = String(selectedDate.getDate()).padStart(2, '0');
         const dateString = `${year}-${month}-${day}`;
 
-        return mockData
-            .filter(reservation => reservation.roomCode === selectedRoom &&
-                reservation.date == dateString)
+        return monthlyReservations
+            .filter(reservation =>
+                reservation.date === dateString
+            )
             .sort((reservationA, reservationB) =>
-                reservationA.startTime.localeCompare(reservationB.startTime));
-    }, [selectedDate, mockData, selectedRoom]);
+                reservationA.startTime.localeCompare(reservationB.startTime)
+            );
+    }, [selectedDate, monthlyReservations]);
 
     return (
         <ListPageLayout>
@@ -65,6 +82,8 @@ const ReservationStatusPage = () => {
                 onMonthChange={handleMonthChange}
                 onRoomChange={setSelectedRoom}
             />
+            {isLoading && <div>로딩 중...</div>}
+            {error && <div style={{ color: 'red' }}>{error}</div>}
             <CalendarView
                 currentDate={currentDate}
                 reservations={monthlyReservations}

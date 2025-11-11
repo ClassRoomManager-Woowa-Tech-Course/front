@@ -1,5 +1,4 @@
 import React from 'react';
-import type { Reservation } from '@/types/Reservation';
 import {
     CloseButton, List,
     ListContent, ListItem,
@@ -8,9 +7,10 @@ import {
     ModalTitle, NoReservation,
     Overlay, Time, Title, User
 } from "../styles/ReservationListModal.styles";
+import {ReservationResponse} from "../types/ReservationResponse";
 
 interface ModalProps {
-    reservations: Reservation[];
+    reservations: ReservationResponse[];
     selectedDate: Date;
     onClose: () => void;
 }
@@ -34,10 +34,10 @@ const ReservationListModal: React.FC<ModalProps> = ({ reservations, selectedDate
                     {reservations.length > 0 ? (
                         <List>
                             {reservations.map(res => (
-                                <ListItem key={res.id}>
+                                <ListItem key={res.reservationId}>
                                     <Time>{res.startTime} ~ {res.endTime}</Time>
                                     <Title>{res.title}</Title>
-                                    <User>(예약자: {res.userId})</User>
+                                    <User>(예약자: {res.memberName})</User>
                                 </ListItem>
                             ))}
                         </List>

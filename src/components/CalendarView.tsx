@@ -1,11 +1,11 @@
 import React, {useMemo} from 'react';
-import type {Reservation} from "@/types/Reservation";
+import type {ReservationResponse} from "@/types/ReservationResponse";
 import {CalendarGrid, DayHeaderCell } from "@/styles/CalendarView.styles";
 import {DayCell, DayHeader, DayNumber, ReservationCount, Spacer} from "../styles/CalendarView.styles";
 
 interface CalendarViewProps {
     currentDate: Date;
-    reservations: Reservation[];
+    reservations: ReservationResponse[];
     onDateSelect: (date : Date) => void;
 }
 
@@ -65,12 +65,16 @@ const CalendarView: React.FC<CalendarViewProps> = ({ currentDate, reservations, 
     const reservationCounts = useMemo(() => {
         const counts: { [key: number]: number } = {};
         const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
+        const month = currentDate.getMonth() + 1;
 
         for (const res of reservations) {
-            const [resYear, resMonth, resDay] = res.date.split('-').map(Number);
-            if (resYear == year && (resMonth - 1) == month) {
-                counts[resDay] = (counts[resDay] || 0) + 1;
+            const resDate = res.date;
+            if (resDate) {
+                const [resYear, resMonth, resDay] = resDate.split('-').map(Number);
+
+                if (resYear === year && resMonth === month) {
+                    counts[resDay] = (counts[resDay] || 0) + 1;
+                }
             }
         }
         return counts;
@@ -85,7 +89,7 @@ const CalendarView: React.FC<CalendarViewProps> = ({ currentDate, reservations, 
             ))}
             {weeks.flat().map(({ date, isCurrentMonth }) => {
                 const day = date.getDate();
-                const reservationCount = isCurrentMonth ? reservationCounts[day || 0] : 0;
+                const reservationCount = isCurrentMonth ? reservationCounts[day] || 0 : 0;
                 const isSunday = date.getDay() === 0;
                 return (
                     <DayCell

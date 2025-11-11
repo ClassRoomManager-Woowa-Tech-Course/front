@@ -12,12 +12,22 @@ import {
     StyledSelect,
     StyledTextArea
 } from "@/styles/FormElements.styles";
+import {registerReservation} from "../api/ReservationApi";
 
 const ReservationPage = () => {
-    const { register, handleSubmit } = useForm<Reservation>();
+    const { register, handleSubmit, reset } = useForm<Reservation>();
 
-    const onSubmit: SubmitHandler<Reservation> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<Reservation> = async (data) => {
+        try {
+            await registerReservation(data);
+
+            alert("예약 등록에 성공했습니다.")
+
+            reset();
+        } catch (error: any) {
+            console.error("예약 등록 실패: ", error);
+            alert(error.message || "예약 등록에 실패했습니다.")
+        }
     }
 
     return (
@@ -30,16 +40,16 @@ const ReservationPage = () => {
                 <h3>신청서 작성</h3>
                 <FormRow>
                     <FormGroup>
-                        <FormLabel htmlFor="userRole">학생/교직원</FormLabel>
-                        <StyledSelect id="userRole" {...register('userRole', { required: true })}>
+                        <FormLabel htmlFor="role">학생/교직원</FormLabel>
+                        <StyledSelect id="role" {...register('role', { required: true })}>
                             <option value="">선택하세요</option>
-                            <option value="student">학생</option>
-                            <option value="staff">교직원</option>
+                            <option value="STUDENT">학생</option>
+                            <option value="STAFF">교직원</option>
                         </StyledSelect>
                     </FormGroup>
                     <FormGroup>
-                        <FormLabel htmlFor="userId">학번/교직원번호</FormLabel>
-                        <StyledInput id="userId" type="text" {...register('userId', { required: true })} />
+                        <FormLabel htmlFor="memberId">학번/교직원번호</FormLabel>
+                        <StyledInput id="memberId" type="text" {...register('memberId', { required: true })} />
                     </FormGroup>
                     <FormGroup>
                         <FormLabel htmlFor="contact">연락처</FormLabel>
