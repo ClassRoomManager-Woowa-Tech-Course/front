@@ -13,6 +13,7 @@ import AdminRegisterPage from "@/pages/AdminRegisterPage";
 import AdminDeletePage from "./pages/AdminDeletePage";
 import GuideLineRegisterPage from "./pages/GuideLineRegisterPage";
 import ReportDetailPage from "./pages/ReportDetailPage";
+import ReservationDetailPage from "./pages/ReservationDetailPage";
 
 
 function App() {
@@ -23,7 +24,9 @@ function App() {
             <Route path="/" element={<MainPage />}/>
             <Route path="/report" element={<ReportPage />}/>
             <Route path="/reservation" element={<ReservationPage />}/>
-            <Route path="/status" element={<ReservationStatusPage />}/>
+            <Route path="/reservations" element={<ReservationStatusPage />}/>
+            <Route path="/reservations/:id" element={<ReservationDetailPage />}/>
+            <Route path="/reservations/edit/:id" element={<ReservationPage />}/>
             <Route path="/guidelines" element={<GuideLinePage />}/>
             <Route path="/guidelines/:id" element={<GuideLineDetailPage />}/>
             <Route path="/guidelines/register" element={<GuideLineRegisterPage />}/>

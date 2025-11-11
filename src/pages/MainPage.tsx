@@ -30,7 +30,7 @@ const MainPage = () => {
                 <MenuButton
                     icon={searchIcon}
                     text="강의실 예약 현황 조회"
-                    to="/status"
+                    to="/reservations"
                 />
             </MenuGrid>
             <Mascot src={mascotImage} alt="Mascot" />

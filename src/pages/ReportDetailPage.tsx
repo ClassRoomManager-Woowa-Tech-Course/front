@@ -18,13 +18,9 @@ import {
     FileNameText
 } from "../styles/FileSection.styles";
 import {useEffect, useState} from "react";
-import {ReportResponse} from "../types/ReportResponse";
+import type {ReportResponse} from "../types/ReportResponse";
 import {getReportById} from "../api/ReportApi";
 
-/**
- * URL이 이미지 파일 확장자를 가지고 있는지 확인하는 헬퍼 함수
- * (GuideLineDetailPage.tsx와 동일)
- */
 const isImageUrl = (url: string): boolean => {
     if (!url) return false;
     return /\.(jpg|jpeg|png|gif|bmp|webp|svg)(\?.*)?$/i.test(url);
