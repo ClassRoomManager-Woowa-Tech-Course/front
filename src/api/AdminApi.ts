@@ -17,9 +17,7 @@ export interface AdminRegisterData {
 
 export const registerAdmin = async (registerData: AdminRegisterData): Promise<void> => {
     try {
-        await api.post('/admins', registerData, {
-            headers: getAuthHeaders()
-        });
+        await api.post('/admins', registerData);
     } catch (error: any) {
         console.error("관리자 등록 실패:", error.response?.data);
         throw new Error(error.response?.data?.message || "관리자 등록에 실패했습니다.");

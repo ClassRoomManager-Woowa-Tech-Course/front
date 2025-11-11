@@ -12,16 +12,12 @@ import {
     StyledForm
 } from "../styles/AdminLoginPage.styles";
 import {loginAdmin} from "../api/AdminApi";
-
-interface AdminLoginInput {
-    adminId: string;
-    password: string;
-}
+import {AdminLoginRequest} from "../types/AdminLoginRequest";
 
 const AdminLoginPage = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<AdminLoginInput>();
+    const { register, handleSubmit, formState: { errors } } = useForm<AdminLoginRequest>();
     const navigate = useNavigate();
-    const onLoginSubmit: SubmitHandler<AdminLoginInput> = async (data) => {
+    const onLoginSubmit: SubmitHandler<AdminLoginRequest> = async (data) => {
         try{
             const response = await loginAdmin(data);
             console.log("로그인 성공, token: ", response.token);
