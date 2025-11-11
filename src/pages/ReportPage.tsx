@@ -6,12 +6,20 @@ import {
     FormGroup, FormLabel, FormRow, ButtonWrapper,
     StyledInput, StyledSelect, StyledTextArea, StyledButton, StyledForm
 } from '@/styles/FormElements.styles';
+import {registerReport} from "../api/ReportApi";
 
 const ReportPage = () => {
-    const { register, handleSubmit } = useForm<Report>();
+    const { register, handleSubmit, reset } = useForm<Report>();
 
-    const onSubmit: SubmitHandler<Report> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<Report> = async (data) => {
+        try {
+            await registerReport(data);
+            alert('고장 신고가 성공적으로 등록되었습니다.')
+            reset();
+        } catch (error) {
+            console.error('고장 신고 등록 실패:', error);
+            alert('등록 중 오류가 발생했습니다.');
+        }
     };
 
     return (
@@ -43,8 +51,8 @@ const ReportPage = () => {
                         <FormLabel htmlFor="userRole">학생/교직원</FormLabel>
                         <StyledSelect id="userRole" {...register('userRole', { required: true })}>
                             <option value="">선택하세요</option>
-                            <option value="student">학생</option>
-                            <option value="staff">교직원</option>
+                            <option value="STUDENT">학생</option>
+                            <option value="STAFF">교직원</option>
                         </StyledSelect>
                     </FormGroup>
 

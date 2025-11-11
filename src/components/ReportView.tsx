@@ -1,11 +1,11 @@
-import type {Report} from "../types/Report";
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import {IoBusinessOutline, IoCalendarOutline} from "react-icons/io5";
 import {ActionButton, ButtonSection, InfoSection, MetaInfo, Title, ViewWrapper} from "../styles/ReportView.styles";
+import {ReportResponse} from "../types/ReportResponse";
 
 interface ViewProps {
-    item: Report;
+    item: ReportResponse;
     onUpdateStatus: (id: number) => void;
 }
 
@@ -13,8 +13,7 @@ const ReportView: React.FC<ViewProps> = ({item, onUpdateStatus}) => {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        // (수정) 2. item.id 사용 (타입에 id가 추가되었다고 가정)
-        navigate(`/report/${item.id}`);
+        navigate(`/reports/${item.id}`);
     };
 
     const handleComplete = () => {
