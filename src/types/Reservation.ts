@@ -5,9 +5,9 @@ export interface Reservation {
     roomCode: string;
     title: string;
     purpose: string;
-    files?: FileList;
-    id: number;
+    reservationId: number;
     date: string;
     startTime: string;
     endTime: string;
+    password: string;
 }

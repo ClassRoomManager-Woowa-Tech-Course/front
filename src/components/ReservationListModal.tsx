@@ -7,7 +7,8 @@ import {
     ModalTitle, NoReservation,
     Overlay, Time, Title, User
 } from "../styles/ReservationListModal.styles";
-import {ReservationResponse} from "../types/ReservationResponse";
+import type {ReservationResponse} from "../types/ReservationResponse";
+import {Link} from "react-router-dom";
 
 interface ModalProps {
     reservations: ReservationResponse[];
@@ -34,11 +35,18 @@ const ReservationListModal: React.FC<ModalProps> = ({ reservations, selectedDate
                     {reservations.length > 0 ? (
                         <List>
                             {reservations.map(res => (
-                                <ListItem key={res.reservationId}>
-                                    <Time>{res.startTime} ~ {res.endTime}</Time>
-                                    <Title>{res.title}</Title>
-                                    <User>(예약자: {res.memberName})</User>
-                                </ListItem>
+                                <Link
+                                    key={res.reservationId}
+                                    to={`/reservations/${res.reservationId}`}
+                                    style={{ textDecoration: 'none', color: 'inherit' }}
+                                    onClick={onClose}
+                                >
+                                    <ListItem>
+                                        <Time>{res.startTime} ~ {res.endTime}</Time>
+                                        <Title>{res.title}</Title>
+                                        <User>(예약자: {res.memberName})</User>
+                                    </ListItem>
+                                </Link>
                             ))}
                         </List>
                     ) : (
