@@ -28,7 +28,7 @@ function App() {
             <Route path="/guidelines/:id" element={<GuideLineDetailPage />}/>
             <Route path="/guidelines/register" element={<GuideLineRegisterPage />}/>
             <Route path="/reports" element={<ReportStatusPage />}/>
-            <Route path="/report/:id" element={<ReportDetailPage />}/>
+            <Route path="/reports/:id" element={<ReportDetailPage />}/>
             <Route path="/admin" element={<AdminLoginPage />}/>
             <Route path="/admin/register" element={<AdminRegisterPage />}/>
             <Route path="/admin/delete" element={<AdminDeletePage />}/>
