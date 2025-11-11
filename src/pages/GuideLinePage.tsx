@@ -30,6 +30,7 @@ const GuideLinePage = () => {
         };
         fetchGuideLines();
     }, []);
+
     if (isLoading) {
         return (
             <ListPageLayout>

@@ -6,15 +6,18 @@ import {
     FormLabel,
     StyledButton,
     StyledForm,
-    StyledInput,
+    StyledInput, StyledSelect,
     StyledTextArea
 } from "@/styles/FormElements.styles";
-import {useForm} from "react-hook-form";
+import {type SubmitHandler, useForm} from "react-hook-form";
 import type {GuideLine} from "@/types/GuideLine";
 import {registerGuideLine} from "@/api/GuideLineApi";
+import {useClassrooms} from "../hooks/useClassrooms";
 
 const GuideLineRegisterPage = () => {
     const {register, handleSubmit, reset} = useForm<GuideLine>();
+    const { classrooms, isLoading, fetchError } = useClassrooms();
+
     const onSubmit: SubmitHandler<GuideLine> = async (data) => {
         try {
             await registerGuideLine(data);
@@ -35,7 +38,17 @@ const GuideLineRegisterPage = () => {
                 <h3>가이드 라인 작성</h3>
                 <FormGroup>
                     <FormLabel htmlFor="roomCode">강의실 호수</FormLabel>
-                    <StyledInput id="roomCode" type="text" {...register('roomCode', { required: true })}/>
+                    <StyledSelect id="roomCode" {...register('roomCode', { required: true })} disabled={isLoading || !!fetchError}>
+                        <option value="">
+                            {isLoading ? '강의실 불러오는 중...' : (fetchError ? '오류 발생' : '강의실을 선택하세요')}
+                        </option>
+                        {!isLoading && !fetchError && classrooms.map((room) => (
+                            <option key={room.roomCode} value={room.roomCode}>
+                                {room.roomCode}
+                            </option>
+                        ))}
+                    </StyledSelect>
+                    {fetchError && <div className="text-red-600 text-xs mt-1.5">{fetchError}</div>}
                 </FormGroup>
                 <FormGroup>
                     <FormLabel htmlFor="content">가이드라인</FormLabel>

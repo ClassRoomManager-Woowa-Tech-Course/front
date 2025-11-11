@@ -6,6 +6,7 @@ import {
     NavButton,
     RoomSelector
 } from "@/styles/CalendarControls.styles";
+import {useClassrooms} from "../hooks/useClassrooms";
 
 interface CalendarControlsProps {
     currentDate: Date;
@@ -21,17 +22,21 @@ const CalendarControls: React.FC<CalendarControlsProps> = ({
                                                                onRoomChange
                                                            }) => {
     const formattedDate = `${currentDate.getFullYear()}. ${String(currentDate.getMonth() + 1).padStart(2, '0')}`;
+    const { classrooms, isLoading, fetchError } = useClassrooms();
     return (
         <ControlsWrapper>
             <RoomSelector
                 value={selectedRoom}
                 onChange={(e) => onRoomChange(e.target.value)}
             >
-                <option value="5413">5413호</option>
-                <option value="5414">5414호</option>
-                <option value="5527">5527호</option>
-                <option value="5507">5507호</option>
-                <option value="5508">5508호</option>
+                <option value="">
+                    {isLoading ? '강의실 불러오는 중...' : (fetchError ? '오류 발생' : '강의실을 선택하세요')}
+                </option>
+                {!isLoading && !fetchError && classrooms.map((room) => (
+                    <option key={room.roomCode} value={room.roomCode}>
+                        {room.roomCode}
+                    </option>
+                ))}
             </RoomSelector>
 
             <MonthNavigator>

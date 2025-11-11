@@ -4,7 +4,7 @@ import {useMemo, useState, useEffect} from "react";
 import CalendarControls from "@/components/CalendarControls";
 import CalendarView from "@/components/CalendarView";
 import ReservationListModal from "../components/ReservationListModal";
-import {ReservationResponse} from "../types/ReservationResponse";
+import type {ReservationResponse} from "../types/ReservationResponse";
 import {getReservations} from "../api/ReservationApi";
 
 const ReservationStatusPage = () => {

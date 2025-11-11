@@ -6,11 +6,12 @@ import {
     FormGroup, FormLabel, FormRow, ButtonWrapper,
     StyledInput, StyledSelect, StyledTextArea, StyledButton, StyledForm
 } from '@/styles/FormElements.styles';
-import {registerReport} from "../api/ReportApi";
+import {registerReport} from "@/api/ReportApi";
+import {useClassrooms} from "@/hooks/useClassrooms";
 
 const ReportPage = () => {
     const { register, handleSubmit, reset } = useForm<Report>();
-
+    const { classrooms, isLoading, fetchError } = useClassrooms();
     const onSubmit: SubmitHandler<Report> = async (data) => {
         try {
             await registerReport(data);
@@ -43,7 +44,17 @@ const ReportPage = () => {
                 </FormGroup>
                 <FormGroup>
                     <FormLabel htmlFor="roomCode">강의실 호수</FormLabel>
-                    <StyledInput id="roomCode" type="text" {...register('roomCode', { required: true })}/>
+                    <StyledSelect id="roomCode" {...register('roomCode', { required: true })} disabled={isLoading || !!fetchError}>
+                        <option value="">
+                            {isLoading ? '강의실 불러오는 중...' : (fetchError ? '오류 발생' : '강의실을 선택하세요')}
+                        </option>
+                        {!isLoading && !fetchError && classrooms.map((room) => (
+                            <option key={room.roomCode} value={room.roomCode}>
+                                {room.roomCode}
+                            </option>
+                        ))}
+                    </StyledSelect>
+                    {fetchError && <div className="text-red-600 text-xs mt-1.5">{fetchError}</div>}
                 </FormGroup>
 
                 <FormRow style={{ gridTemplateColumns: '1fr 2fr 2fr' }}>
