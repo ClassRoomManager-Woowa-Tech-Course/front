@@ -11,7 +11,7 @@ import {
 } from "@/styles/FormElements.styles";
 import {useForm} from "react-hook-form";
 import type {GuideLine} from "@/types/GuideLine";
-import {registerGuideLine} from "../api/GuideLineApi";
+import {registerGuideLine} from "@/api/GuideLineApi";
 
 const GuideLineRegisterPage = () => {
     const {register, handleSubmit, reset} = useForm<GuideLine>();
