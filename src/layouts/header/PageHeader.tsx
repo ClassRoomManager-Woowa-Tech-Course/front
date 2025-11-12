@@ -1,4 +1,3 @@
-// src/components/PageHeader.tsx
 import React from 'react';
 import styled from 'styled-components';
 
