@@ -1,5 +1,4 @@
 import PageLayout from "@/layouts/PageLayout";
-import PageHeader from "@/components/PageHeader";
 import {
     ButtonWrapper,
     FormGroup,
@@ -9,12 +8,13 @@ import {
     StyledInput,
     StyledSelect
 } from "@/styles/FormElements.styles";
-import {SubmitHandler, useForm} from "react-hook-form";
-import type {Admin} from "@/types/Admin";
-import {AdminRegisterData, registerAdmin} from "../api/AdminApi";
+import {type SubmitHandler, useForm} from "react-hook-form";
+import {registerAdmin} from "../api/AdminApi";
+import type {Admin} from "../types/Admin";
+import PageHeader from "../layouts/header/PageHeader";
 
 const AdminRegisterPage = () => {
-    const {register, handleSubmit, reset} = useForm<AdminRegisterData>();
+    const {register, handleSubmit, reset} = useForm<Admin>();
     const onRegisterSubmit: SubmitHandler<Admin> = async (data) => {
         try {
             await registerAdmin(data);

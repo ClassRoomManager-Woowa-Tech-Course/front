@@ -1,5 +1,4 @@
 import PageLayout from "@/layouts/PageLayout";
-import PageHeader from "@/components/PageHeader";
 import {
     ButtonWrapper,
     FormGroup,
@@ -9,12 +8,13 @@ import {
     StyledInput,
     StyledSelect
 } from "@/styles/FormElements.styles";
-import {SubmitHandler, useForm} from "react-hook-form";
-import type {Admin} from "@/types/Admin";
-import {AdminManageData, deleteAdmin, suspendAdmin} from "@/api/AdminApi";
+import {type SubmitHandler, useForm} from "react-hook-form";
+import {deleteAdmin, suspendAdmin} from "@/api/AdminApi";
+import type {Admin} from "../types/Admin";
+import PageHeader from "../layouts/header/PageHeader";
 
 const AdminRegisterPage = () => {
-    const {register, handleSubmit, reset} = useForm<AdminManageData>();
+    const {register, handleSubmit, reset} = useForm<Admin>();
 
     const onDeleteSubmit: SubmitHandler<Admin> = async (data) => {
         const confirmMessage = data.active === "DELETE"
@@ -30,6 +30,9 @@ const AdminRegisterPage = () => {
                     name: data.name,
                     role: data.role,
                     contact: data.contact,
+                    active: data.active,
+                    password: data.password,
+                    authorization: data.authorization,
                 });
                 alert("관리자 삭제가 완료되었습니다.");
             } else if (data.active === "INACTIVE") {
@@ -38,6 +41,9 @@ const AdminRegisterPage = () => {
                     name: data.name,
                     role: data.role,
                     contact: data.contact,
+                    active: data.active,
+                    password: data.password,
+                    authorization: data.authorization
                 });
                 alert("관리자 휴면 처리가 완료되었습니다.");
             }

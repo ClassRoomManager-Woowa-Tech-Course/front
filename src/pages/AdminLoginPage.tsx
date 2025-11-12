@@ -12,7 +12,7 @@ import {
     StyledForm
 } from "../styles/AdminLoginPage.styles";
 import {loginAdmin} from "../api/AdminApi";
-import {AdminLoginRequest} from "../types/AdminLoginRequest";
+import type {AdminLoginRequest} from "../types/AdminLoginRequest";
 
 const AdminLoginPage = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<AdminLoginRequest>();
@@ -21,9 +21,7 @@ const AdminLoginPage = () => {
         try{
             const response = await loginAdmin(data);
             console.log("로그인 성공, token: ", response.token);
-
             localStorage.setItem('token', response.token);
-
             navigate('/reports');
         } catch (error: any) {
             console.error('로그인 실패: ', error.response?.date || error.message);

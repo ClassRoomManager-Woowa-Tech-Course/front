@@ -1,12 +1,11 @@
 import type {Authorization} from "./Authorization";
 
 export interface Admin {
-    id: number;
-    userId: number;
+    adminId: number;
     name: string;
     contact: string;
     password: string;
-    userRole:string;
+    role:string;
     authorization: Authorization;
-    active: 'ACTIVE'|'INACTIVE';
+    active: string;
 }
