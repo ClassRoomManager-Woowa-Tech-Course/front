@@ -14,29 +14,30 @@ import AdminDeletePage from "./pages/AdminDeletePage";
 import GuideLineRegisterPage from "./pages/GuideLineRegisterPage";
 import ReportDetailPage from "./pages/ReportDetailPage";
 import ReservationDetailPage from "./pages/ReservationDetailPage";
-import Header from "./layouts/header/Header";
+import {LayoutWithHeader} from "./layouts/header/LayoutWithHeader";
 
 
 function App() {
   return (
     <BrowserRouter>
         <GlobalStyle/>
-        <Header/>
         <Routes>
-            <Route path="/" element={<MainPage />}/>
-            <Route path="/report" element={<ReportPage />}/>
-            <Route path="/reservation" element={<ReservationPage />}/>
-            <Route path="/reservations" element={<ReservationStatusPage />}/>
-            <Route path="/reservations/:id" element={<ReservationDetailPage />}/>
-            <Route path="/reservations/edit/:id" element={<ReservationPage />}/>
-            <Route path="/guidelines" element={<GuideLinePage />}/>
-            <Route path="/guidelines/:id" element={<GuideLineDetailPage />}/>
-            <Route path="/guidelines/register" element={<GuideLineRegisterPage />}/>
-            <Route path="/reports" element={<ReportStatusPage />}/>
-            <Route path="/reports/:id" element={<ReportDetailPage />}/>
+            <Route element={<LayoutWithHeader />}>
+                <Route path="/report" element={<ReportPage />}/>
+                <Route path="/reservation" element={<ReservationPage />}/>
+                <Route path="/reservations" element={<ReservationStatusPage />}/>
+                <Route path="/reservations/:id" element={<ReservationDetailPage />}/>
+                <Route path="/reservations/edit/:id" element={<ReservationPage />}/>
+                <Route path="/guidelines" element={<GuideLinePage />}/>
+                <Route path="/guidelines/:id" element={<GuideLineDetailPage />}/>
+                <Route path="/guidelines/register" element={<GuideLineRegisterPage />}/>
+                <Route path="/reports" element={<ReportStatusPage />}/>
+                <Route path="/reports/:id" element={<ReportDetailPage />}/>
+                <Route path="/admin/register" element={<AdminRegisterPage />}/>
+                <Route path="/admin/delete" element={<AdminDeletePage />}/>
+            </Route>
             <Route path="/admin" element={<AdminLoginPage />}/>
-            <Route path="/admin/register" element={<AdminRegisterPage />}/>
-            <Route path="/admin/delete" element={<AdminDeletePage />}/>
+            <Route path="/" element={<MainPage />}/>
         </Routes>
     </BrowserRouter>
   )
