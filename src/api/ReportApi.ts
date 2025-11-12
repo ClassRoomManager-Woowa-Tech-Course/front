@@ -39,3 +39,16 @@ export const getReportById = async (id: string): Promise<ReportResponse> => {
     const response = await api.get(`/reports/${id}`);
     return response.data;
 }
+
+export const updateReportStatus = async (reportId: number, newStatus: string) => {
+    const requestBody = {
+        reportId: reportId,
+        status: newStatus
+    };
+    try {
+        await api.patch('/reports', requestBody);
+    } catch (error: any) {
+        console.error("신고 상태 처리 실패:", error.response?.data);
+        throw new Error(error.response?.data?.message || "상태 업데이트에 실패했습니다.");
+    }
+}

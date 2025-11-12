@@ -2,7 +2,8 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import {IoBusinessOutline, IoCalendarOutline} from "react-icons/io5";
 import {ActionButton, ButtonSection, InfoSection, MetaInfo, Title, ViewWrapper} from "../styles/ReportView.styles";
-import {ReportResponse} from "../types/ReportResponse";
+import type {ReportResponse} from "@/types/ReportResponse";
+import {updateReportStatus} from "@/api/ReportApi";
 
 interface ViewProps {
     item: ReportResponse;
@@ -16,10 +17,10 @@ const ReportView: React.FC<ViewProps> = ({item, onUpdateStatus}) => {
         navigate(`/reports/${item.id}`);
     };
 
-    const handleComplete = () => {
-        // 'pending' 상태일 때만 함수를 호출
+    const handleComplete = async () => {
         if (item.status === 'PENDING') {
             onUpdateStatus(item.id);
+            await updateReportStatus(item.id, 'COMPLETED')
         }
     };
 

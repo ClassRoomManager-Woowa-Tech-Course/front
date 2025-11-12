@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import type {Report} from "@/types/Report";
+import type {ReportResponse} from "@/types/ReportResponse";
 
-export const ViewWrapper = styled.div<{ item: Report }>`
+export const ViewWrapper = styled.div<{ item: ReportResponse }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
