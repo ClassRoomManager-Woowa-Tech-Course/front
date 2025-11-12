@@ -14,12 +14,14 @@ import AdminDeletePage from "./pages/AdminDeletePage";
 import GuideLineRegisterPage from "./pages/GuideLineRegisterPage";
 import ReportDetailPage from "./pages/ReportDetailPage";
 import ReservationDetailPage from "./pages/ReservationDetailPage";
+import Header from "./layouts/header/Header";
 
 
 function App() {
   return (
     <BrowserRouter>
         <GlobalStyle/>
+        <Header/>
         <Routes>
             <Route path="/" element={<MainPage />}/>
             <Route path="/report" element={<ReportPage />}/>
