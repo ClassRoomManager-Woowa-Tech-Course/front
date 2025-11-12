@@ -1,11 +1,11 @@
 import ListPageLayout from "@/layouts/ListPageLayout";
-import ListPageHeader from "@/components/ListPageHeader";
 import {useMemo, useState, useEffect} from "react";
 import CalendarControls from "@/components/CalendarControls";
 import CalendarView from "@/components/CalendarView";
-import ReservationListModal from "../components/ReservationListModal";
-import type {ReservationResponse} from "../types/ReservationResponse";
-import {getReservations} from "../api/ReservationApi";
+import ReservationListModal from "@/components/ReservationListModal";
+import type {ReservationResponse} from "@/types/ReservationResponse";
+import {getReservations} from "@/api/ReservationApi";
+import ListPageHeader from "@/layouts/header/ListPageHeader";
 
 const ReservationStatusPage = () => {
     const [currentDate, setCurrentDate] = useState(new Date());

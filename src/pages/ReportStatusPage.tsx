@@ -1,9 +1,9 @@
 import ListPageLayout from "@/layouts/ListPageLayout";
-import ListPageHeader from "@/components/ListPageHeader";
 import Reports from "@/components/Reports";
 import {useEffect, useState} from "react";
 import type {ReportResponse} from "@/types/ReportResponse";
 import {getReports} from "@/api/ReportApi";
+import ListPageHeader from "@/layouts/header/ListPageHeader";
 
 const ReportStatusPage = () => {
     const [reports, setReports] = useState<ReportResponse[]>([]);

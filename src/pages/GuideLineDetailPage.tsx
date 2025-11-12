@@ -1,5 +1,4 @@
 import ListPageLayout from "@/layouts/ListPageLayout";
-import ListPageHeader from "@/components/ListPageHeader";
 import {useParams} from "react-router-dom";
 import {useState, useEffect} from "react";
 import {IoCalendarOutline} from "react-icons/io5";
@@ -13,6 +12,9 @@ import {
     AttachedFileLink,
     AttachedImage
 } from "../styles/FileSection.styles";
+import type {GuideLineResponse} from "@/types/GuideLineResponse";
+import ListPageHeader from "@/layouts/header/ListPageHeader";
+
 const isImageUrl = (url: string): boolean => {
     if (!url) return false;
     return /\.(jpg|jpeg|png|gif|bmp|webp|svg)(\?.*)?$/i.test(url);

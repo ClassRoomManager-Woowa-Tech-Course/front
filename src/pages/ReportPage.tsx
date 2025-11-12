@@ -1,6 +1,5 @@
 import {type SubmitHandler, useForm} from 'react-hook-form';
 import PageLayout from "@/layouts/PageLayout";
-import PageHeader from "@/components/PageHeader";
 import type { Report } from "@/types/Report"
 import {
     FormGroup, FormLabel, FormRow, ButtonWrapper,
@@ -8,6 +7,7 @@ import {
 } from '@/styles/FormElements.styles';
 import {registerReport} from "@/api/ReportApi";
 import {useClassrooms} from "@/hooks/useClassrooms";
+import PageHeader from "@/layouts/header/PageHeader";
 
 const ReportPage = () => {
     const { register, handleSubmit, reset } = useForm<Report>();

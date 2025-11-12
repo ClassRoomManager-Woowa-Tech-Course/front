@@ -1,5 +1,4 @@
 import PageLayout from "@/layouts/PageLayout";
-import PageHeader from "@/components/PageHeader";
 import {
     ButtonWrapper,
     FormGroup,
@@ -12,7 +11,8 @@ import {
 import {type SubmitHandler, useForm} from "react-hook-form";
 import type {GuideLine} from "@/types/GuideLine";
 import {registerGuideLine} from "@/api/GuideLineApi";
-import {useClassrooms} from "../hooks/useClassrooms";
+import {useClassrooms} from "@/hooks/useClassrooms";
+import PageHeader from "@/layouts/header/PageHeader";
 
 const GuideLineRegisterPage = () => {
     const {register, handleSubmit, reset} = useForm<GuideLine>();

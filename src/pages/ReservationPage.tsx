@@ -1,7 +1,6 @@
 import { type SubmitHandler, useForm} from "react-hook-form";
 import type {Reservation} from "@/types/Reservation";
 import PageLayout from "@/layouts/PageLayout";
-import PageHeader from "@/components/PageHeader";
 import {
     ButtonWrapper,
     FormGroup,
@@ -13,9 +12,10 @@ import {
     StyledTextArea
 } from "@/styles/FormElements.styles";
 import {getReservationById, registerReservation, updateReservation} from "../api/ReservationApi";
-import {useClassrooms} from "../hooks/useClassrooms";
+import {useClassrooms} from "@/hooks/useClassrooms";
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect} from "react";
+import PageHeader from "@/layouts/header/PageHeader";
 
 const ReservationPage = () => {
     const { register, handleSubmit, reset } = useForm<Reservation>();

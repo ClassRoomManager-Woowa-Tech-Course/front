@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { IoCalendarOutline, IoBusinessOutline } from 'react-icons/io5';
 import {ActionButton, ButtonSection, InfoSection, MetaInfo, Title, ViewWrapper} from "../styles/GuideLineView.styles";
-import {GuideLineResponse} from "../types/GuideLineResponse";
+import type {GuideLineResponse} from "@/types/GuideLineResponse";
 interface ViewProps {
     item: GuideLineResponse;
 }
@@ -22,7 +22,7 @@ const GuideLineView: React.FC<ViewProps> = ({item}) => {
                     <IoCalendarOutline/>
                     <span>{item.date}</span>
                     <IoBusinessOutline/>
-                    <span>{item.roomCode}</span>
+                    <span>{item.roomCode}호</span>
                 </MetaInfo>
             </InfoSection>
             <ButtonSection>

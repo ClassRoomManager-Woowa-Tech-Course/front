@@ -1,9 +1,9 @@
 import ListPageLayout from "@/layouts/ListPageLayout";
-import ListPageHeader from "@/components/ListPageHeader";
 import GuideLines from "../components/GuideLines";
 import {getGuideLines} from "../api/GuideLineApi";
 import { useState, useEffect } from "react";
 import type { GuideLineResponse } from "@/types/GuideLineResponse";
+import ListPageHeader from "@/layouts/header/ListPageHeader";
 
 const GuideLinePage = () => {
     const [guideLines, setGuideLines] = useState<GuideLineResponse[]>([]);

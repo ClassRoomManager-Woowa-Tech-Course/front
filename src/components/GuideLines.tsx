@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import GuideLineView from "@/components/GuideLineView";
-import {GuideLineResponse} from "../types/GuideLineResponse";
+import type {GuideLineResponse} from "@/types/GuideLineResponse";
 
 interface ListProps {
     items: GuideLineResponse[];

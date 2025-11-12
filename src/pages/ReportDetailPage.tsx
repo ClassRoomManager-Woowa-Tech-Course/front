@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
-import ListPageLayout from "../layouts/ListPageLayout";
-import ListPageHeader from "../components/ListPageHeader";
+import ListPageLayout from "@/layouts/ListPageLayout";
+import ListPageHeader from "@/layouts/header/ListPageHeader";
 import {IoBusinessOutline, IoCalendarOutline} from "react-icons/io5";
 
 import {

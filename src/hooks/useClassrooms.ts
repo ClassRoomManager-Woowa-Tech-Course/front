@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import type { ClassroomResponse } from "@/types/ClassroomResponse"; // @/ 별칭 사용
-import { getClassroom } from "@/api/ClassroomApi"; // @/ 별칭 사용
+import type { ClassroomResponse } from "@/types/ClassroomResponse";
+import { getClassroom } from "@/api/ClassroomApi";
 
 export const useClassrooms = () => {
     const [classrooms, setClassrooms] = useState<ClassroomResponse[]>([]);
