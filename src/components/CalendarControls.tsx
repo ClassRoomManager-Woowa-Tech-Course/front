@@ -34,7 +34,7 @@ const CalendarControls: React.FC<CalendarControlsProps> = ({
                 </option>
                 {!isLoading && !fetchError && classrooms.map((room) => (
                     <option key={room.roomCode} value={room.roomCode}>
-                        {room.roomCode}
+                        {room.roomCode}호
                     </option>
                 ))}
             </RoomSelector>
