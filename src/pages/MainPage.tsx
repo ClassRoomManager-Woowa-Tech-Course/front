@@ -6,7 +6,7 @@ import calendarIcon from '@/assets/icons/calendar.png';
 import searchIcon from '@/assets/icons/search.png';
 import mascotImage from '@/assets/icons/mascot_welcome.png'
 import { MenuGrid, PageContainer } from "@/styles/MainPage.styles";
-import {Mascot} from "../styles/MainPage.styles";
+import {Mascot} from "@/styles/MainPage.styles";
 
 const MainPage = () => {
     return (

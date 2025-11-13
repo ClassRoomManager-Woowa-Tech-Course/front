@@ -12,6 +12,7 @@ import PageHeader from "@/layouts/header/PageHeader";
 const ReportPage = () => {
     const { register, handleSubmit, reset } = useForm<Report>();
     const { classrooms, isLoading, fetchError } = useClassrooms();
+
     const onSubmit: SubmitHandler<Report> = async (data) => {
         try {
             await registerReport(data);
@@ -31,7 +32,6 @@ const ReportPage = () => {
             />
             <StyledForm onSubmit={handleSubmit(onSubmit)}>
                 <h3>신고 내용 입력</h3>
-
                 <FormGroup>
                     <FormLabel htmlFor="item">고장 물품</FormLabel>
                     <StyledSelect id="item" {...register('item', { required: true })}>
@@ -56,33 +56,28 @@ const ReportPage = () => {
                     </StyledSelect>
                     {fetchError && <div className="text-red-600 text-xs mt-1.5">{fetchError}</div>}
                 </FormGroup>
-
                 <FormRow style={{ gridTemplateColumns: '1fr 2fr 2fr' }}>
                     <FormGroup>
-                        <FormLabel htmlFor="userRole">학생/교직원</FormLabel>
-                        <StyledSelect id="userRole" {...register('userRole', { required: true })}>
+                        <FormLabel htmlFor="role">학생/교직원</FormLabel>
+                        <StyledSelect id="role" {...register('role', { required: true })}>
                             <option value="">선택하세요</option>
                             <option value="STUDENT">학생</option>
                             <option value="STAFF">교직원</option>
                         </StyledSelect>
                     </FormGroup>
-
                     <FormGroup>
                         <FormLabel htmlFor="userId">학번/교직원번호</FormLabel>
                         <StyledInput id="userId" type="text" {...register('userId', { required: true })} />
                     </FormGroup>
-
                     <FormGroup>
                         <FormLabel htmlFor="contact">연락처</FormLabel>
                         <StyledInput id="contact" type="tel" {...register('contact', { required: true })} />
                     </FormGroup>
                 </FormRow>
-
                 <FormGroup>
                     <FormLabel htmlFor="content">고장 상세 기재</FormLabel>
                     <StyledTextArea id="content" {...register('content', { required: true })} />
                 </FormGroup>
-
                 <FormGroup>
                     <FormLabel htmlFor="file">첨부 파일</FormLabel>
                     <StyledInput id="file" type="file" multiple {...register('files')}/>

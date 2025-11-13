@@ -3,7 +3,7 @@ export interface Report {
     date: string;
     item: string;
     roomCode: string;
-    userRole: 'STUDENT' | 'STAFF' | '';
+    role: 'STUDENT' | 'STAFF' | '';
     userId: string;
     contact: string;
     content: string;

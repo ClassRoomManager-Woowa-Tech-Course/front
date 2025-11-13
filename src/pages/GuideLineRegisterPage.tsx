@@ -28,6 +28,7 @@ const GuideLineRegisterPage = () => {
             alert('등록 중 오류가 발생했습니다.');
         }
     };
+
     return (
         <PageLayout>
             <PageHeader

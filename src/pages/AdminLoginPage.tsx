@@ -10,9 +10,9 @@ import {
     MainFormWrapper, Mascot, NavigationButtonWrapper,
     PageWrapper, StyledButton,
     StyledForm
-} from "../styles/AdminLoginPage.styles";
-import {loginAdmin} from "../api/AdminApi";
-import type {AdminLoginRequest} from "../types/AdminLoginRequest";
+} from "@/styles/AdminLoginPage.styles";
+import {loginAdmin} from "@/api/AdminApi";
+import type {AdminLoginRequest} from "@/types/AdminLoginRequest";
 
 const AdminLoginPage = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<AdminLoginRequest>();

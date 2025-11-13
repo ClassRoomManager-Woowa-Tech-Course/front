@@ -11,7 +11,7 @@ import {
     FileItem,
     AttachedFileLink,
     AttachedImage
-} from "../styles/FileSection.styles";
+} from "@/styles/FileSection.styles";
 import type {GuideLineResponse} from "@/types/GuideLineResponse";
 import ListPageHeader from "@/layouts/header/ListPageHeader";
 

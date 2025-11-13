@@ -7,7 +7,7 @@ import {
     ContentText,
     ContentWrapper,
     DescriptionWrapper
-} from "../styles/DetailPage.styles";
+} from "@/styles/DetailPage.styles";
 import {
     FileSectionWrapper,
     FileSectionTitle,
@@ -16,10 +16,10 @@ import {
     AttachedImage,
     AttachedFileLink,
     FileNameText
-} from "../styles/FileSection.styles";
+} from "@/styles/FileSection.styles";
 import {useEffect, useState} from "react";
-import type {ReportResponse} from "../types/ReportResponse";
-import {getReportById} from "../api/ReportApi";
+import type {ReportResponse} from "@/types/ReportResponse";
+import {getReportById} from "@/api/ReportApi";
 
 const isImageUrl = (url: string): boolean => {
     if (!url) return false;

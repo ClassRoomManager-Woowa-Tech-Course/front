@@ -7,10 +7,10 @@ import {
     ContentText,
     ContentWrapper,
     DescriptionWrapper, PasswordInput, PasswordPromptWrapper, ErrorMessage, ActionButton
-} from "../styles/DetailPage.styles";
+} from "@/styles/DetailPage.styles";
 import {useEffect, useState} from "react";
-import type {ReservationResponse} from "../types/ReservationResponse";
-import {cancelReservation, getReservationById} from "../api/ReservationApi";
+import type {ReservationResponse} from "@/types/ReservationResponse";
+import {cancelReservation, getReservationById} from "@/api/ReservationApi";
 
 
 const ReservationDetailPage = () => {
@@ -64,7 +64,6 @@ const ReservationDetailPage = () => {
             setIsCanceling(false);
         }
     };
-
     if (isLoading) {
         return (
             <ListPageLayout>
@@ -85,6 +84,7 @@ const ReservationDetailPage = () => {
             </ListPageLayout>
         )
     }
+
     return (
         <ListPageLayout>
             <ListPageHeader

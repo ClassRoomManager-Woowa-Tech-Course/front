@@ -10,8 +10,8 @@ import {
 } from "@/styles/FormElements.styles";
 import {type SubmitHandler, useForm} from "react-hook-form";
 import {deleteAdmin, suspendAdmin} from "@/api/AdminApi";
-import type {Admin} from "../types/Admin";
-import PageHeader from "../layouts/header/PageHeader";
+import type {Admin} from "@/types/Admin";
+import PageHeader from "@/layouts/header/PageHeader";
 
 const AdminRegisterPage = () => {
     const {register, handleSubmit, reset} = useForm<Admin>();

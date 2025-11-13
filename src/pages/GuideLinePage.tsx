@@ -1,6 +1,6 @@
 import ListPageLayout from "@/layouts/ListPageLayout";
-import GuideLines from "../components/GuideLines";
-import {getGuideLines} from "../api/GuideLineApi";
+import GuideLines from "@/components/GuideLines";
+import {getGuideLines} from "@/api/GuideLineApi";
 import { useState, useEffect } from "react";
 import type { GuideLineResponse } from "@/types/GuideLineResponse";
 import ListPageHeader from "@/layouts/header/ListPageHeader";

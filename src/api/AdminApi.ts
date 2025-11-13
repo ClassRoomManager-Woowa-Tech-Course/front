@@ -1,7 +1,7 @@
 import {api} from "./Client";
 import type {AdminLoginRequest} from "@/types/AdminLoginRequest";
-import type {LoginResponse} from "../types/LoginResponse";
-import type {Admin} from "../types/Admin";
+import type {LoginResponse} from "@/types/LoginResponse";
+import type {Admin} from "@/types/Admin";
 
 export const loginAdmin = async (loginData: AdminLoginRequest): Promise<LoginResponse> => {
     const res = await api.post('/admins/login', loginData);

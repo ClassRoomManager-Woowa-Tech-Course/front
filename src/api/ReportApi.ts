@@ -6,7 +6,7 @@ export const registerReport = async (data: Report) => {
     const formData = new FormData();
     const reportData = {
         item: data.item,
-        role: data.userRole,
+        role: data.role,
         roomCode: data.roomCode,
         memberId: data.userId,
         contact: data.contact,

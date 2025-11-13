@@ -9,12 +9,13 @@ import {
     StyledSelect
 } from "@/styles/FormElements.styles";
 import {type SubmitHandler, useForm} from "react-hook-form";
-import {registerAdmin} from "../api/AdminApi";
-import type {Admin} from "../types/Admin";
-import PageHeader from "../layouts/header/PageHeader";
+import {registerAdmin} from "@/api/AdminApi";
+import type {Admin} from "@/types/Admin";
+import PageHeader from "@/layouts/header/PageHeader";
 
 const AdminRegisterPage = () => {
     const {register, handleSubmit, reset} = useForm<Admin>();
+
     const onRegisterSubmit: SubmitHandler<Admin> = async (data) => {
         try {
             await registerAdmin(data);
@@ -27,6 +28,7 @@ const AdminRegisterPage = () => {
             alert(error.message || "관리자 등록에 실패했습니다.")
         }
     }
+
     return (
         <PageLayout>
             <PageHeader

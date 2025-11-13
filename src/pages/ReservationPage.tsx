@@ -11,7 +11,7 @@ import {
     StyledSelect,
     StyledTextArea
 } from "@/styles/FormElements.styles";
-import {getReservationById, registerReservation, updateReservation} from "../api/ReservationApi";
+import {getReservationById, registerReservation, updateReservation} from "@/api/ReservationApi";
 import {useClassrooms} from "@/hooks/useClassrooms";
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect} from "react";
