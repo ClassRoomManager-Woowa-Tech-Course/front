@@ -10,11 +10,11 @@ import GuideLineDetailPage from "@/pages/GuideLineDetailPage";
 import ReportStatusPage from "@/pages/ReportStatusPage";
 import AdminLoginPage from "@/pages/AdminLoginPage";
 import AdminRegisterPage from "@/pages/AdminRegisterPage";
-import AdminDeletePage from "./pages/AdminDeletePage";
-import GuideLineRegisterPage from "./pages/GuideLineRegisterPage";
-import ReportDetailPage from "./pages/ReportDetailPage";
-import ReservationDetailPage from "./pages/ReservationDetailPage";
-import {LayoutWithHeader} from "./layouts/header/LayoutWithHeader";
+import AdminDeletePage from "@/pages/AdminDeletePage";
+import GuideLineRegisterPage from "@/pages/GuideLineRegisterPage";
+import ReportDetailPage from "@/pages/ReportDetailPage";
+import ReservationDetailPage from "@/pages/ReservationDetailPage";
+import {LayoutWithHeader} from "@/layouts/header/LayoutWithHeader";
 
 
 function App() {

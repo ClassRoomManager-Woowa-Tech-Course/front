@@ -1,7 +1,7 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import {IoBusinessOutline, IoCalendarOutline} from "react-icons/io5";
-import {ActionButton, ButtonSection, InfoSection, MetaInfo, Title, ViewWrapper} from "../styles/ReportView.styles";
+import {ActionButton, ButtonSection, InfoSection, MetaInfo, Title, ViewWrapper} from "@/styles/ReportView.styles";
 import type {ReportResponse} from "@/types/ReportResponse";
 import {updateReportStatus} from "@/api/ReportApi";
 

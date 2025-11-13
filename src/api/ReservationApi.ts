@@ -1,6 +1,6 @@
 import {api} from "./Client";
 import type {Reservation} from "@/types/Reservation";
-import type {ReservationResponse} from "../types/ReservationResponse";
+import type {ReservationResponse} from "@/types/ReservationResponse";
 
 const combineDateTime = (date: string, time: string): string => {
     return `${date}T${time}`;

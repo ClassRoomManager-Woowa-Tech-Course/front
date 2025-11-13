@@ -1,6 +1,6 @@
 import {api} from "./Client";
-import type {GuideLine} from "../types/GuideLine";
-import type {GuideLineResponse} from "../types/GuideLineResponse";
+import type {GuideLine} from "@/types/GuideLine";
+import type {GuideLineResponse} from "@/types/GuideLineResponse";
 
 export const registerGuideLine = async (data: GuideLine) => {
     const formData = new FormData();

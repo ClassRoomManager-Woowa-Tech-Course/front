@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { IoCalendarOutline, IoBusinessOutline } from 'react-icons/io5';
-import {ActionButton, ButtonSection, InfoSection, MetaInfo, Title, ViewWrapper} from "../styles/GuideLineView.styles";
+import {ActionButton, ButtonSection, InfoSection, MetaInfo, Title, ViewWrapper} from "@/styles/GuideLineView.styles";
 import type {GuideLineResponse} from "@/types/GuideLineResponse";
 interface ViewProps {
     item: GuideLineResponse;

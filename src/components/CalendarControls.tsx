@@ -6,7 +6,7 @@ import {
     NavButton,
     RoomSelector
 } from "@/styles/CalendarControls.styles";
-import {useClassrooms} from "../hooks/useClassrooms";
+import {useClassrooms} from "@/hooks/useClassrooms";
 
 interface CalendarControlsProps {
     currentDate: Date;

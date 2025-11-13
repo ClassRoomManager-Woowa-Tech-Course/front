@@ -1,6 +1,6 @@
-import type {Report} from '../types/Report';
+import type {Report} from '@/types/Report';
 import {api} from "./Client";
-import type {ReportResponse} from "../types/ReportResponse";
+import type {ReportResponse} from "@/types/ReportResponse";
 
 export const registerReport = async (data: Report) => {
     const formData = new FormData();

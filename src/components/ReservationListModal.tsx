@@ -6,8 +6,8 @@ import {
     ModalHeader,
     ModalTitle, NoReservation,
     Overlay, Time, Title, User
-} from "../styles/ReservationListModal.styles";
-import type {ReservationResponse} from "../types/ReservationResponse";
+} from "@/styles/ReservationListModal.styles";
+import type {ReservationResponse} from "@/types/ReservationResponse";
 import {Link} from "react-router-dom";
 
 interface ModalProps {

@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react';
 import type {ReservationResponse} from "@/types/ReservationResponse";
 import {CalendarGrid, DayHeaderCell } from "@/styles/CalendarView.styles";
-import {DayCell, DayHeader, DayNumber, ReservationCount, Spacer} from "../styles/CalendarView.styles";
+import {DayCell, DayHeader, DayNumber, ReservationCount, Spacer} from "@/styles/CalendarView.styles";
 
 interface CalendarViewProps {
     currentDate: Date;
