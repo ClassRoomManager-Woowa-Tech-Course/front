@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.div`
-    width: 80%;
+    width: 70%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 40px;
+    padding: 10px;
     position: relative;
     box-sizing: border-box;
     
@@ -17,15 +17,14 @@ export const PageWrapper = styled.div`
 export const ContentContainer = styled.div`
      text-align: left;
      width: 100%;
-     max-width: 800px; // 최대 너비
+     max-width: 900px;
      color: black;
 `;
 
 export const Mascot = styled.img`
-    position: fixed; // 뷰포트 기준 고정 (스크롤 따라옴)
+    position: fixed;
     left: 75%;
     bottom: 20%;
-    //width: 250px;
     width: 300px;
     z-index: 5;
     // 화면 너비가 768px 이하일 때 (태블릿/모바일)

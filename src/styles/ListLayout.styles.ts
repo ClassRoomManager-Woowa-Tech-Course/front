@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.div`
-    width: 80%;
+    width: 70%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 40px;          
+    padding: 10px;          
     box-sizing: border-box;
 
     @media (max-width: 768px) {
@@ -18,7 +18,6 @@ export const ContentContainer = styled.div`
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  
   width: 100%;
   max-width: 1000px;
   z-index: 10;
