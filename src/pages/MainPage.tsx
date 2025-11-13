@@ -1,43 +1,84 @@
-import MenuButton from '@/components/MenuButton';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import buildingImage from '@/assets/icons/built.png';
+import {ContentWrapper, PageContainer} from "@/styles/MainPage.styles";
+import type {MenuItem} from "@/types/MenuItem";
+import {Header, Subtitle, Title} from "@/styles/MainPage.styles";
+import {
+    ArrowIcon, BuildingImage,
+    BuildingImageContainer,
+    CardDescription,
+    CardIcon,
+    CardTitle, Footer, FooterText,
+    MenuCard,
+    MenuGrid
+} from "../styles/MainPage.styles";
 
-import sirenIcon from '@/assets/icons/siren.png';
-import compassIcon from '@/assets/icons/compass.png';
-import calendarIcon from '@/assets/icons/calendar.png';
-import searchIcon from '@/assets/icons/search.png';
-import mascotImage from '@/assets/icons/mascot_welcome.png'
-import { MenuGrid, PageContainer } from "@/styles/MainPage.styles";
-import {Mascot} from "@/styles/MainPage.styles";
+const MainPage: React.FC = () => {
+    const navigate = useNavigate();
 
-const MainPage = () => {
+    const menuItems: MenuItem[] = [
+        {
+            id: 1,
+            title: '고장 신고',
+            description: '기자재 고장 및 문제 신고',
+            icon: '🚨',
+            path: '/report',
+            color: '#FF6B6B'
+        },
+        {
+            id: 2,
+            title: '강의실 예약',
+            description: '강의실 예약 신청',
+            icon: '📅',
+            path: '/reservation',
+            color: '#4ECDC4'
+        },
+        {
+            id: 3,
+            title: '가이드라인',
+            description: '강의실 사용 안내',
+            icon: '📖',
+            path: '/guidelines',
+            color: '#96CEB4'
+        }
+    ];
+
+    const handleCardClick = (path: string): void => {
+        navigate(path);
+    };
+
     return (
         <PageContainer>
-            <MenuGrid>
-                <MenuButton
-                    icon={sirenIcon}
-                    text="고장 신고하기"
-                    to="/report"
-                />
-                <MenuButton
-                    icon={compassIcon}
-                    text="강의실 가이드라인 조회"
-                    to="/guidelines"
-                />
-                <MenuButton
-                    icon={calendarIcon}
-                    text="강의실 예약하기"
-                    to="/reservation"
-                />
-                <MenuButton
-                    icon={searchIcon}
-                    text="강의실 예약 현황 조회"
-                    to="/reservations"
-                />
-            </MenuGrid>
-            <Mascot src={mascotImage} alt="Mascot" />
+            <ContentWrapper>
+                <Header>
+                    <Title>강의실 관리 시스템</Title>
+                    <Subtitle>Classroom Management System</Subtitle>
+                </Header>
+
+                <MenuGrid>
+                    {menuItems.map((item) => (
+                        <MenuCard
+                            key={item.id}
+                            onClick={() => handleCardClick(item.path)}
+                            $color={item.color}
+                        >
+                            <CardIcon>{item.icon}</CardIcon>
+                            <CardTitle>{item.title}</CardTitle>
+                            <CardDescription>{item.description}</CardDescription>
+                            <ArrowIcon $color={item.color}>→</ArrowIcon>
+                        </MenuCard>
+                    ))}
+                </MenuGrid>
+                <BuildingImageContainer>
+                    <BuildingImage src={buildingImage} alt="Campus Building" />
+                </BuildingImageContainer>
+            </ContentWrapper>
+            <Footer>
+                <FooterText>© 2025 Classroom Management System</FooterText>
+            </Footer>
         </PageContainer>
-
     );
-
 };
 
 export default MainPage;

@@ -1,7 +1,6 @@
 import './App.css'
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import ReportPage from '@/pages/ReportPage';
-import MainPage from "@/pages/MainPage";
 import GlobalStyle from "@/styles/GlobalStyle";
 import ReservationPage from "@/pages/ReservationPage";
 import ReservationStatusPage from "@/pages/ReservationStatusPage";
@@ -15,6 +14,7 @@ import GuideLineRegisterPage from "@/pages/GuideLineRegisterPage";
 import ReportDetailPage from "@/pages/ReportDetailPage";
 import ReservationDetailPage from "@/pages/ReservationDetailPage";
 import {LayoutWithHeader} from "@/layouts/header/LayoutWithHeader";
+import MainPage from "@/pages/MainPage";
 
 
 function App() {
@@ -35,9 +35,9 @@ function App() {
                 <Route path="/reports/:id" element={<ReportDetailPage />}/>
                 <Route path="/admin/register" element={<AdminRegisterPage />}/>
                 <Route path="/admin/delete" element={<AdminDeletePage />}/>
+                <Route path="/" element={<MainPage />}/>
             </Route>
             <Route path="/admin" element={<AdminLoginPage />}/>
-            <Route path="/" element={<MainPage />}/>
         </Routes>
     </BrowserRouter>
   )
