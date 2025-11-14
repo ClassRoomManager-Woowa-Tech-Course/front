@@ -23,9 +23,9 @@ export const ContentContainer = styled.div`
 
 export const Mascot = styled.img`
     position: fixed;
-    left: 75%;
-    bottom: 20%;
-    width: 300px;
+    left: 70%;
+    bottom: 10%;
+    width: 470px;
     z-index: 5;
     // 화면 너비가 768px 이하일 때 (태블릿/모바일)
     @media (max-width: 768px) {

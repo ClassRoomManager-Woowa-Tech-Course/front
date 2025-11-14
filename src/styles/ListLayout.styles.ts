@@ -31,9 +31,9 @@ export const ContentContainer = styled.div`
 
 export const Mascot = styled.img`
   position: fixed;
-  left: 70%;
+  left: 65%;
   bottom: 5%;
-  width: 350px;
+  width: 550px;
   z-index: 5;
 
   @media (max-width: 768px) {
