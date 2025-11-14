@@ -139,7 +139,13 @@ export const DropdownButton = styled.button`
     color: #4A5568;
     text-decoration: none;
     box-sizing: border-box;
-
+    background: none;
+    border: none;
+    
+    &:focus {
+        outline: none;
+    }
+    
     &:hover {
         background-color: #F7FAFC;
         color: #2D3748;
