@@ -28,5 +28,5 @@ export const useGuideLine = () => {
         fetchGuideLines();
     }, []);
 
-    return {guideLines, isLoading, error}
+    return {guideLines, isLoading, error};
 }
