@@ -17,42 +17,12 @@ import {
     AttachedFileLink,
     FileNameText
 } from "@/styles/FileSection.styles";
-import {useEffect, useState} from "react";
-import type {ReportResponse} from "@/types/ReportResponse";
-import {getReportById} from "@/api/ReportApi";
-
-const isImageUrl = (url: string): boolean => {
-    if (!url) return false;
-    return /\.(jpg|jpeg|png|gif|bmp|webp|svg)(\?.*)?$/i.test(url);
-};
+import {extractFileName, isImageUrl} from "../utils/fileUtils";
+import {useReportDetail} from "../hooks/useReportDetail";
 
 const ReportDetailPage = () => {
     const {id} = useParams<{id: string}>();
-    const [item, setItem] = useState<ReportResponse | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        if (!id) return;
-        const fetchReport = async () => {
-            try {
-                setIsLoading(true);
-                setError(null);
-                const data = await getReportById(id);
-                const formattedData = {
-                    ...data,
-                    date: data.date ? data.date.replace('T', ' ').substring(0, 16) : '날짜 없음'
-                };
-                setItem(formattedData);
-            } catch (err) {
-                console.error("Failed to fetch report detail:", err);
-                setError("게시글을 불러오는 데 실패했습니다.");
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchReport();
-    }, [id]);
+    const {item, isLoading, error} = useReportDetail(id);
 
     if (isLoading) {
         return (
@@ -99,7 +69,7 @@ const ReportDetailPage = () => {
                         <FilesContainer>
                             {item.fileUrls.map((url, index) => {
                                 const isImage = isImageUrl(url);
-                                const fileName = url.split('/').pop()?.split('?')[0] || `파일 ${index + 1}`;
+                                const fileName = extractFileName(url, index);
 
                                 return (
                                     <FileItem key={index}>
