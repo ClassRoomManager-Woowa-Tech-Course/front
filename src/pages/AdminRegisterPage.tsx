@@ -9,23 +9,18 @@ import {
     StyledSelect
 } from "@/styles/FormElements.styles";
 import {type SubmitHandler, useForm} from "react-hook-form";
-import {registerAdmin} from "@/api/AdminApi";
 import type {Admin} from "@/types/Admin";
 import PageHeader from "@/layouts/header/PageHeader";
+import {useAdminRegister} from "../hooks/useAdminRegister";
 
 const AdminRegisterPage = () => {
-    const {register, handleSubmit, reset} = useForm<Admin>();
+    const {register: formRegister, handleSubmit, reset} = useForm<Admin>();
+    const {register: registerAdmin, isLoading } = useAdminRegister();
 
     const onRegisterSubmit: SubmitHandler<Admin> = async (data) => {
-        try {
-            await registerAdmin(data);
-
-            alert("관리자 등록에 성공했습니다.")
-
+        const success = await registerAdmin(data);
+        if (success) {
             reset();
-        } catch (error: any) {
-            console.error("관리자 등록 실패: ", error);
-            alert(error.message || "관리자 등록에 실패했습니다.")
         }
     }
 
@@ -40,7 +35,11 @@ const AdminRegisterPage = () => {
 
                 <FormGroup>
                     <FormLabel htmlFor="role">학생/교직원</FormLabel>
-                    <StyledSelect id="role" {...register('role', { required: true })}>
+                    <StyledSelect
+                        id="role"
+                        {...formRegister('role', { required: true })}
+                        disabled={isLoading}
+                    >
                         <option value="">선택하세요</option>
                         <option value="STUDENT">학생</option>
                         <option value="STAFF">교직원</option>
@@ -49,25 +48,49 @@ const AdminRegisterPage = () => {
                 <FormRow>
                     <FormGroup>
                         <FormLabel htmlFor="name">성명</FormLabel>
-                        <StyledInput id="name" type="text" {...register('name', { required: true })}/>
+                        <StyledInput
+                            id="name"
+                            type="text"
+                            {...formRegister('name', { required: true })}
+                            disabled={isLoading}
+                        />
                     </FormGroup>
                     <FormGroup>
                         <FormLabel htmlFor="password">비밀번호</FormLabel>
-                        <StyledInput id="password" type="text" {...register('password', { required: true })}/>
+                        <StyledInput
+                            id="password"
+                            type="text"
+                            {...formRegister('password', { required: true })}
+                            disabled={isLoading}
+                        />
                     </FormGroup>
                 </FormRow>
                 <FormRow>
                     <FormGroup>
                         <FormLabel htmlFor="adminId">학번/교직원번호</FormLabel>
-                        <StyledInput id="adminId" type="text" {...register('adminId', { required: true })} />
+                        <StyledInput
+                            id="adminId"
+                            type="text"
+                            {...formRegister('adminId', { required: true })}
+                            disabled={isLoading}
+                        />
                     </FormGroup>
                     <FormGroup>
                         <FormLabel htmlFor="contact">연락처</FormLabel>
-                        <StyledInput id="contact" type="tel" {...register('contact', { required: true })} />
+                        <StyledInput
+                            id="contact"
+                            type="tel"
+                            {...formRegister('contact', { required: true })}
+                            disabled={isLoading}
+                        />
                     </FormGroup>
                     <FormGroup>
                         <FormLabel htmlFor="authorization">접근 권한 설정</FormLabel>
-                        <StyledSelect id="authorization" {...register('authorization', { required: true })}>
+                        <StyledSelect
+                            id="authorization"
+                            {...formRegister('authorization', { required: true })}
+                            disabled={isLoading}
+                        >
                             <option value="">선택하세요</option>
                             <option value="SUPER_ADMIN">전체 관리자</option>
                             <option value="ADMIN">관리자</option>
@@ -77,7 +100,7 @@ const AdminRegisterPage = () => {
                     </FormGroup>
                 </FormRow>
                 <ButtonWrapper>
-                    <StyledButton type="submit">등록하기</StyledButton>
+                    <StyledButton type="submit" disabled={isLoading}>등록하기</StyledButton>
                 </ButtonWrapper>
             </StyledForm>
         </PageLayout>

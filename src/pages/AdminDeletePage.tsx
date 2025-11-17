@@ -9,50 +9,19 @@ import {
     StyledSelect
 } from "@/styles/FormElements.styles";
 import {type SubmitHandler, useForm} from "react-hook-form";
-import {deleteAdmin, suspendAdmin} from "@/api/AdminApi";
 import type {Admin} from "@/types/Admin";
 import PageHeader from "@/layouts/header/PageHeader";
+import {useAdminDelete} from "../hooks/useAdminDelete";
 
 const AdminRegisterPage = () => {
     const {register, handleSubmit, reset} = useForm<Admin>();
-
+    const { handleAdminAction, isLoading } = useAdminDelete();
     const onDeleteSubmit: SubmitHandler<Admin> = async (data) => {
-        const confirmMessage = data.active === "DELETE"
-            ? `정말로 '${data.adminId}' 관리자를 삭제하시겠습니까?`
-            : `정말로 '${data.adminId}' 관리자를 휴면 처리하시겠습니까?`;
-        if (!window.confirm(confirmMessage)) {
-            return;
-        }
-        try {
-            if (data.active === "DELETE") {
-                await deleteAdmin({
-                    adminId: data.adminId,
-                    name: data.name,
-                    role: data.role,
-                    contact: data.contact,
-                    active: data.active,
-                    password: data.password,
-                    authorization: data.authorization,
-                });
-                alert("관리자 삭제가 완료되었습니다.");
-            } else if (data.active === "INACTIVE") {
-                await suspendAdmin({
-                    adminId: data.adminId,
-                    name: data.name,
-                    role: data.role,
-                    contact: data.contact,
-                    active: data.active,
-                    password: data.password,
-                    authorization: data.authorization
-                });
-                alert("관리자 휴면 처리가 완료되었습니다.");
-            }
+        const success = await handleAdminAction(data);
+        if (success) {
             reset();
-        } catch (error: any) {
-            console.error("작업 실패:", error);
-            alert(error.message || "작업에 실패했습니다.");
         }
-    }
+    };
     return (
         <PageLayout>
             <PageHeader
@@ -93,10 +62,10 @@ const AdminRegisterPage = () => {
                     </FormGroup>
                 </FormRow>
                 <ButtonWrapper>
-                    <StyledButton type="submit">수정하기</StyledButton>
+                    <StyledButton type="submit" disabled={isLoading}>수정하기</StyledButton>
                 </ButtonWrapper>
             </StyledForm>
         </PageLayout>
-    )
-}
+    );
+};
 export default AdminRegisterPage;

@@ -11,22 +11,15 @@ import {
     PageWrapper, StyledButton,
     StyledForm
 } from "@/styles/AdminLoginPage.styles";
-import {loginAdmin} from "@/api/AdminApi";
 import type {AdminLoginRequest} from "@/types/AdminLoginRequest";
+import {useAdminLogin} from "../hooks/useAdminLogin";
 
 const AdminLoginPage = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<AdminLoginRequest>();
+    const { login, isLoding } = useAdminLogin()
     const navigate = useNavigate();
     const onLoginSubmit: SubmitHandler<AdminLoginRequest> = async (data) => {
-        try{
-            const response = await loginAdmin(data);
-            console.log("로그인 성공, token: ", response.token);
-            localStorage.setItem('token', response.token);
-            navigate('/reports');
-        } catch (error: any) {
-            console.error('로그인 실패: ', error.response?.date || error.message);
-            alert('로그인 실패: 아이디 또는 비밀번호를 확인하세요.')
-        }
+        await login(data);
     };
     return (
         <PageWrapper>
@@ -56,7 +49,7 @@ const AdminLoginPage = () => {
                             <ErrorMessage>ID와 PW를 모두 입력해야 합니다.</ErrorMessage>
                         )}
                     </InputGroup>
-                    <LoginButton type="submit">
+                    <LoginButton type="submit" disabled={isLoding}>
                         로그인
                     </LoginButton>
                 </MainFormWrapper>
