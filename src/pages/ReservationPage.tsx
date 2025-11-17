@@ -1,4 +1,4 @@
-import { type SubmitHandler, useForm} from "react-hook-form";
+import { type SubmitHandler} from "react-hook-form";
 import type {Reservation} from "@/types/Reservation";
 import PageLayout from "@/layouts/PageLayout";
 import {
@@ -11,33 +11,17 @@ import {
     StyledSelect,
     StyledTextArea
 } from "@/styles/FormElements.styles";
-import {getReservationById, registerReservation, updateReservation} from "@/api/ReservationApi";
+import {registerReservation, updateReservation} from "@/api/ReservationApi";
 import {useClassrooms} from "@/hooks/useClassrooms";
 import {useNavigate, useParams} from "react-router-dom";
-import {useEffect} from "react";
 import PageHeader from "@/layouts/header/PageHeader";
+import {useReservation} from "../hooks/useReservation";
 
 const ReservationPage = () => {
-    const { register, handleSubmit, reset } = useForm<Reservation>();
-    const { classrooms, isLoading, fetchError } = useClassrooms();
-    const { id } = useParams<{ id: string }>();
-    const isEditMode = Boolean(id);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if (isEditMode && id) {
-            const fetchAndPopulateData = async () => {
-                try {
-                    const data = await getReservationById(id);
-                    reset(data);
-                } catch (error) {
-                    console.error("Failed to fetch reservation data:", error);
-                    alert("예약 정보를 불러오는 데 실패했습니다.");
-                }
-            };
-            fetchAndPopulateData();
-        }
-    }, [id, isEditMode, reset]);
+    const { id } = useParams<{ id: string }>();
+    const { classrooms, isLoading, fetchError } = useClassrooms();
+    const {register, isEditMode, handleSubmit} = useReservation(id);
 
     const onSubmit: SubmitHandler<Reservation> = async (data) => {
         try {
@@ -146,4 +130,5 @@ const ReservationPage = () => {
         </PageLayout>
     )
 }
+
 export default ReservationPage;
