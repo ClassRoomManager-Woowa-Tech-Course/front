@@ -1,9 +1,7 @@
 import ListPageLayout from "@/layouts/ListPageLayout";
 import {useParams} from "react-router-dom";
-import {useState, useEffect} from "react";
 import {IoCalendarOutline} from "react-icons/io5";
 import {ContentText, ContentWrapper, DescriptionWrapper} from "../styles/DetailPage.styles";
-import {getGuideLineById} from "../api/GuideLineApi";
 import {
     FileSectionWrapper,
     FileSectionTitle,
@@ -12,40 +10,13 @@ import {
     AttachedFileLink,
     AttachedImage
 } from "@/styles/FileSection.styles";
-import type {GuideLineResponse} from "@/types/GuideLineResponse";
 import ListPageHeader from "@/layouts/header/ListPageHeader";
-
-const isImageUrl = (url: string): boolean => {
-    if (!url) return false;
-    return /\.(jpg|jpeg|png|gif|bmp|webp|svg)(\?.*)?$/i.test(url);
-};
+import {useGuideLineDetail} from "@/hooks/useGuideLineDetail";
+import {extractFileName, isImageUrl} from "@/utils/fileUtils";
 
 const GuideLineDetailPage = () => {
     const {id} = useParams<{id: string}>();
-    const [item, setItem] = useState<GuideLineResponse | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    useEffect(() => {
-        if (!id) return;
-        const fetchGuideLine = async () => {
-            try {
-                setIsLoading(true);
-                setError(null);
-                const data = await getGuideLineById(id);
-                const formattedData = {
-                    ...data,
-                    date: data.date ? data.date.replace('T', ' ').substring(0, 16) : '날짜 없음'
-                };
-                setItem(formattedData);
-            } catch (err) {
-                console.error("Failed to fetch guideline detail:", err);
-                setError("게시글을 불러오는 데 실패했습니다.");
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchGuideLine();
-    }, [id]);
+    const { item, isLoading, error } = useGuideLineDetail(id);
     if (isLoading) {
         return (
             <ListPageLayout>
@@ -87,8 +58,7 @@ const GuideLineDetailPage = () => {
                         <FilesContainer>
                             {item.fileUrls.map((url, index) => {
                                 const isImage = isImageUrl(url);
-                                // 파일명 추출 시 쿼리 파라미터 제거
-                                const fileName = url.split('/').pop()?.split('?')[0] || `파일 ${index + 1}`;
+                                const fileName = extractFileName(url, index);
 
                                 return (
                                     <FileItem key={index}>

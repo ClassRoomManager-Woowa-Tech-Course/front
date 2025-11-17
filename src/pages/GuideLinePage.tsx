@@ -1,36 +1,10 @@
 import ListPageLayout from "@/layouts/ListPageLayout";
 import GuideLines from "@/components/GuideLines";
-import {getGuideLines} from "@/api/GuideLineApi";
-import { useState, useEffect } from "react";
-import type { GuideLineResponse } from "@/types/GuideLineResponse";
 import ListPageHeader from "@/layouts/header/ListPageHeader";
+import {useGuideLine} from "../hooks/useGuideLine";
 
 const GuideLinePage = () => {
-    const [guideLines, setGuideLines] = useState<GuideLineResponse[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const fetchGuideLines = async () => {
-            try {
-                setIsLoading(true);
-                setError(null);
-                const data = await getGuideLines();
-                const formattedData = data.map(item => ({
-                    ...item,
-                    date: item.date.replace('T', ' ').substring(0, 16)
-                }));
-                setGuideLines(formattedData);
-            } catch (err) {
-                console.error("Failed to fetch guidelines:", err);
-                setError("가이드라인을 불러오는 데 실패했습니다.");
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchGuideLines();
-    }, []);
-
+    const {guideLines, isLoading, error} = useGuideLine();
     if (isLoading) {
         return (
             <ListPageLayout>
