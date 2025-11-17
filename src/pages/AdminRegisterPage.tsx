@@ -16,7 +16,6 @@ import {useAdminRegister} from "../hooks/useAdminRegister";
 const AdminRegisterPage = () => {
     const {register: formRegister, handleSubmit, reset} = useForm<Admin>();
     const {register: registerAdmin, isLoading } = useAdminRegister();
-
     const onRegisterSubmit: SubmitHandler<Admin> = async (data) => {
         const success = await registerAdmin(data);
         if (success) {

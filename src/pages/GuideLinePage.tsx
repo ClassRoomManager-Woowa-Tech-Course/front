@@ -5,6 +5,7 @@ import {useGuideLine} from "../hooks/useGuideLine";
 
 const GuideLinePage = () => {
     const {guideLines, isLoading, error} = useGuideLine();
+
     if (isLoading) {
         return (
             <ListPageLayout>

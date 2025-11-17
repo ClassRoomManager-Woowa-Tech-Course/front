@@ -22,6 +22,7 @@ const AdminRegisterPage = () => {
             reset();
         }
     };
+
     return (
         <PageLayout>
             <PageHeader

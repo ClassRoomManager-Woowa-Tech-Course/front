@@ -21,6 +21,7 @@ const AdminLoginPage = () => {
     const onLoginSubmit: SubmitHandler<AdminLoginRequest> = async (data) => {
         await login(data);
     };
+
     return (
         <PageWrapper>
             <StyledForm onSubmit={handleSubmit(onLoginSubmit)}>

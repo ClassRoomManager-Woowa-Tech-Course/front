@@ -5,7 +5,7 @@ import {
     DropdownContainer,
     DropdownLink,
     DropdownMenu
-} from "../../styles/Header.styles";
+} from "@/styles/Header.styles";
 import {useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 

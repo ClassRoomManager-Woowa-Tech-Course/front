@@ -17,6 +17,7 @@ import {extractFileName, isImageUrl} from "@/utils/fileUtils";
 const GuideLineDetailPage = () => {
     const {id} = useParams<{id: string}>();
     const { item, isLoading, error } = useGuideLineDetail(id);
+
     if (isLoading) {
         return (
             <ListPageLayout>
