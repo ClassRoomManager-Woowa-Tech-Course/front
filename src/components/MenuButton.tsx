@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -8,7 +7,7 @@ interface MenuButtonProps {
     to: string;
 }
 
-const MenuButton: React.FC<MenuButtonProps> = ({icon, text, to}) => {
+const MenuButton = ({icon, text, to} : MenuButtonProps) => {
     return <StyledLink to={to}>
         <img src={icon} alt={text} />
         <span>{text}</span>

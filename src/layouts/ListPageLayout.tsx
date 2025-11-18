@@ -1,11 +1,8 @@
-import React from "react";
 import mascotImage from "@/assets/icons/mascot_hello.png";
 import {ContentContainer, Mascot, PageWrapper} from "../styles/ListLayout.styles";
-interface ListPageLayoutProps {
-    children: React.ReactNode;
-}
+import type {PageLayoutProps} from "@/types/PageLayoutProps";
 
-const ListPageLayout: React.FC<ListPageLayoutProps> = ({ children }) => {
+const ListPageLayout = ({ children }: PageLayoutProps) => {
     return (
         <PageWrapper>
             <ContentContainer>

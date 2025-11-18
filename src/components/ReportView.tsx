@@ -1,4 +1,3 @@
-import React from "react";
 import {useNavigate} from "react-router-dom";
 import {IoBusinessOutline, IoCalendarOutline} from "react-icons/io5";
 import {ActionButton, ButtonSection, InfoSection, MetaInfo, Title, ViewWrapper} from "@/styles/ReportView.styles";
@@ -10,7 +9,7 @@ interface ViewProps {
     onUpdateStatus: (id: number) => void;
 }
 
-const ReportView: React.FC<ViewProps> = ({item, onUpdateStatus}) => {
+const ReportView = ({item, onUpdateStatus} : ViewProps) => {
     const navigate = useNavigate();
 
     const handleNavigate = () => {

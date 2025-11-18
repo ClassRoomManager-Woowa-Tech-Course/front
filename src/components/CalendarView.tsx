@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import {useMemo} from 'react';
 import type {ReservationResponse} from "@/types/ReservationResponse";
 import {CalendarGrid, DayHeaderCell } from "@/styles/CalendarView.styles";
 import {DayCell, DayHeader, DayNumber, ReservationCount, Spacer} from "@/styles/CalendarView.styles";
@@ -58,7 +58,7 @@ const buildCalendarDays = (date: Date): DayInfo[][] => {
 };
 
 
-const CalendarView: React.FC<CalendarViewProps> = ({ currentDate, reservations, onDateSelect }) => {
+const CalendarView = ({ currentDate, reservations, onDateSelect }: CalendarViewProps) => {
     const weeks = buildCalendarDays(currentDate);
     const dayHeaders = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 

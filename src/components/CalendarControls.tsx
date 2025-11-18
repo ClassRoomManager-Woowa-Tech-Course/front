@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     ControlsWrapper,
     CurrentMonth,
@@ -15,12 +14,12 @@ interface CalendarControlsProps {
     onRoomChange: (room: string) => void;
 }
 
-const CalendarControls: React.FC<CalendarControlsProps> = ({
+const CalendarControls = ({
                                                                currentDate,
                                                                selectedRoom,
                                                                onMonthChange,
                                                                onRoomChange
-                                                           }) => {
+                                                           } : CalendarControlsProps) => {
     const formattedDate = `${currentDate.getFullYear()}. ${String(currentDate.getMonth() + 1).padStart(2, '0')}`;
     const { classrooms, isLoading, fetchError } = useClassrooms();
     return (

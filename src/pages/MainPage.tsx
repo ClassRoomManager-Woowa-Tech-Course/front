@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import buildingImage from '@/assets/icons/built.png';
 import {ContentWrapper, PageContainer} from "@/styles/MainPage.styles";
@@ -14,7 +13,7 @@ import {
     MenuGrid
 } from "../styles/MainPage.styles";
 
-const MainPage: React.FC = () => {
+const MainPage = () => {
     const navigate = useNavigate();
 
     const menuItems: MenuItem[] = [

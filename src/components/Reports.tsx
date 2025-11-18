@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import ReportView from "@/components/ReportView";
 import type {ReportResponse} from "@/types/ReportResponse";
@@ -8,7 +7,7 @@ interface ListProps {
     onUpdateStatus: (id: number) => void;
 }
 
-const Reports: React.FC<ListProps> = ({ items, onUpdateStatus }) => {
+const Reports = ({ items, onUpdateStatus }: ListProps) => {
     return (
         <ListWrapper>
             {items.map(item => (

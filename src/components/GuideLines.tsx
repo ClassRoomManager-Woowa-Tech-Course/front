@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import GuideLineView from "@/components/GuideLineView";
 import type {GuideLineResponse} from "@/types/GuideLineResponse";
@@ -7,7 +6,7 @@ interface ListProps {
     items: GuideLineResponse[];
 }
 
-const GuideLines: React.FC<ListProps> = ({ items }) => {
+const GuideLines = ({ items } :ListProps) => {
     return (
         <ListWrapper>
             {items.map(item => (

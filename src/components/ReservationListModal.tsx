@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     CloseButton, List,
     ListContent, ListItem,
@@ -16,7 +15,7 @@ interface ModalProps {
     onClose: () => void;
 }
 
-const ReservationListModal: React.FC<ModalProps> = ({ reservations, selectedDate, onClose }) => {
+const ReservationListModal = ({ reservations, selectedDate, onClose } : ModalProps) => {
     // 날짜 포맷 (예: "11월 4일 (화)")
     const formattedDate = selectedDate.toLocaleDateString('ko-KR', {
         month: 'long',

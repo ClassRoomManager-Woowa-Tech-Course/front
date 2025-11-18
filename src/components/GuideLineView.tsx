@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { IoCalendarOutline, IoBusinessOutline } from 'react-icons/io5';
 import {ActionButton, ButtonSection, InfoSection, MetaInfo, Title, ViewWrapper} from "@/styles/GuideLineView.styles";
@@ -7,7 +6,7 @@ interface ViewProps {
     item: GuideLineResponse;
 }
 
-const GuideLineView: React.FC<ViewProps> = ({item}) => {
+const GuideLineView = ({item} : ViewProps) => {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
