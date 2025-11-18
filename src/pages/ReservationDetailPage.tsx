@@ -50,7 +50,7 @@ const ReservationDetailPage = () => {
     return (
         <ListPageLayout>
             <ListPageHeader
-                title={`"${item.title}" 예약`}
+                title={`${item.title} 예약`}
                 description={
                     <DescriptionWrapper>
                         <IoCalendarOutline />
