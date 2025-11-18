@@ -8,8 +8,8 @@ import {
     ContentWrapper,
     DescriptionWrapper, PasswordInput, PasswordPromptWrapper, ErrorMessage, ActionButton
 } from "@/styles/DetailPage.styles";
-import {useReservationDetail} from "../hooks/useReservationDetail";
-import {useReservationCancel} from "../hooks/useReservationCancel";
+import {useReservationDetail} from "@/hooks/useReservationDetail";
+import {useReservationCancel} from "@/hooks/useReservationCancel";
 
 
 const ReservationDetailPage = () => {

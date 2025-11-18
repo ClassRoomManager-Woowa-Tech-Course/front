@@ -24,9 +24,10 @@ export const ContentContainer = styled.div`
 export const Mascot = styled.img`
     position: fixed;
     left: 70%;
-    bottom: 10%;
-    width: 470px;
+    bottom: 5%;
+    width: clamp(300px, 25vw, 550px);
     z-index: 5;
+    height: auto;
     // 화면 너비가 768px 이하일 때 (태블릿/모바일)
     @media (max-width: 768px) {
         display: none; // 마스코트를 숨겨서 콘텐츠를 가리지 않도록 함
