@@ -33,7 +33,7 @@ export const Mascot = styled.img`
   position: fixed;
   left: 65%;
   bottom: 5%;
-  width: clamp(300px, 40vw, 550px);
+  width: clamp(300px, 30vw, 550px);
   height: auto;
   z-index: 5;
 
