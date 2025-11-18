@@ -5,14 +5,17 @@ import {useGuideLine} from "../hooks/useGuideLine";
 
 const GuideLinePage = () => {
     const {guideLines, isLoading, error} = useGuideLine();
+    const header = (
+        <ListPageHeader
+            title="강의실 사용 가이드라인"
+            description="강의실 사용 가이드라인 페이지입니다."
+        />
+    );
 
     if (isLoading) {
         return (
             <ListPageLayout>
-                <ListPageHeader
-                    title="강의실 사용 가이드라인"
-                    description="강의실 사용 가이드라인 페이지입니다."
-                />
+                {header}
                 <div>로딩 중...</div>
             </ListPageLayout>
         );
@@ -20,20 +23,14 @@ const GuideLinePage = () => {
     if (error) {
         return (
             <ListPageLayout>
-                <ListPageHeader
-                    title="강의실 사용 가이드라인"
-                    description="강의실 사용 가이드라인 페이지입니다."
-                />
+                {header}
                 <div style={{ color: 'red' }}>{error}</div>
             </ListPageLayout>
         );
     }
     return (
         <ListPageLayout>
-            <ListPageHeader
-                title="강의실 사용 가이드라인"
-                description="강의실 사용 가이드라인 페이지입니다."
-            />
+            {header}
             <GuideLines items={guideLines} />
         </ListPageLayout>
     );
