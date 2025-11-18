@@ -63,7 +63,7 @@ const ReservationDetailPage = () => {
                 }
             />
             <ContentWrapper>
-                <ContentText>{item.title}</ContentText>
+                <ContentText>{item.purpose}</ContentText>
 
                 <ActionButtonsWrapper>
                     <ActionButton
