@@ -280,5 +280,5 @@ const { currentDate, handleMonthChange } = useCalendarState();
 - **타입/인터페이스**: PascalCase
 - **파일명**: PascalCase (컴포넌트), camelCase (유틸리티)
 
-
+Notion: https://versed-music-9b1.notion.site/2a1242c6313480c3900cd502271b3527?pvs=74  
 **Woowa-Tech-Course** - 오픈과제
